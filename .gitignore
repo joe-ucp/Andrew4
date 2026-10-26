@@ -1,0 +1,29 @@
+# Private UCP framework, research governance, source caches and history.
+/_UCP/
+**/_UCP/
+**/_ucp/
+**/_[Uu][Cc][Pp]/
+
+# Local reconstruction runs and temporary working files.
+**/_reproduced/
+**/_work/
+**/__pycache__/
+**/.venv/
+*.py[cod]
+
+# TeX/compiler/editor output; the reviewed PDF, Word and TeX remain visible.
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+~$*
+.DS_Store
+Thumbs.db
+
+# Archives are private working material; the repository is the release.
+*.zip
+*.tar
+*.tar.gz

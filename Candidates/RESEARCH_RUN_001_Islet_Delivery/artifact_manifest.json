@@ -1,0 +1,579 @@
+{
+  "schema_version": "1.0",
+  "task_id": "ANDREW4-SC006",
+  "run_id": "RUN001",
+  "revision": 3,
+  "status": "repository_release",
+  "artifacts": [
+    {
+      "path": ".gitattributes",
+      "sha256": "16f9b2f28998480e811ec0ba0ad8e2889b60a81fd18f8f34f2dcc6bb9db44c51",
+      "size_bytes": 248,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "6c5ec9ce066121821c7a4649470ec3ebcba964c966f00fed5f777f5e8a2aec0c",
+      "size_bytes": 421,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/build_manuscript.py",
+      "sha256": "16000165485a6381f5f0ff0a9c4078a91aff7faf9e8a28c250dd87e28a93ef67",
+      "size_bytes": 8743,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/compose_paper.py",
+      "sha256": "5e34a0adf5873183d6d5c4d5d9dfc6b86f7742435ecab873b9ae3da6c29db9c0",
+      "size_bytes": 33619,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/design_constraints.py",
+      "sha256": "148216a6fc5b5bc52639591beb325f8376b77ae5684f5316ae161f5ebff3b86f",
+      "size_bytes": 24515,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/design_figures.py",
+      "sha256": "b8e08d78ffa7f84f4b18807cab56fa13ff83f880a32e0999bfed35507f98e9cb",
+      "size_bytes": 3415,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/finite_volume.py",
+      "sha256": "a04e5d198a68ec844d4ffb8bec2de3c1357b9ad494e6d5bf970b4b6bf3404819",
+      "size_bytes": 3500,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/METHODS.md",
+      "sha256": "7e783d28f19e5e40f20472be2c7e3951fcf6c7618188c4dea02893f4c99ce93d",
+      "size_bytes": 20436,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/modal.py",
+      "sha256": "fe53a85032c5506a03edfe9ae8e52cde6f3e9217f00b584572f7fb590ddd26db",
+      "size_bytes": 3524,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/reproduce.py",
+      "sha256": "024c6d39254505586817de82d92925ba61746afaf1e99b072a44e1ced15d3490",
+      "size_bytes": 19987,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/reproduction_contract.py",
+      "sha256": "1c4b774b4eec49186e4ef6564f6a8147dadcbb814189af0fbf0adaaa580da8d2",
+      "size_bytes": 29503,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/requirements.txt",
+      "sha256": "9310ef4abe0b61bfd27633fabef6f482c9fe22c5257dd25444b3789423527266",
+      "size_bytes": 49,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/revision_figures.py",
+      "sha256": "108f0a263b849e95164064b12c8cfb5ab534e18769d6cf52030703bd29f33050",
+      "size_bytes": 5125,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/robustness.py",
+      "sha256": "bcbb30842efcf95ce342f63e6d9709f9335eb9b5e788e1d2266dc3844a2f403e",
+      "size_bytes": 19007,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/source_accounting.py",
+      "sha256": "9a1f447d4224fef0becfe22303c2e392d2c42187549d6df99046949bcf6f42cc",
+      "size_bytes": 7578,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/test_reproduction_contract.py",
+      "sha256": "bcf2629ee29ca5acf0d330f3a9537785b6e11a0d601eafb12ed8a1b3a7805f81",
+      "size_bytes": 18367,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "code/verify_manifest.py",
+      "sha256": "631511d1df20100a6c0770593531e8759c756bbe525dc13f9da3ec458f2b965c",
+      "size_bytes": 3287,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/boundary_sensitivity.csv",
+      "sha256": "bfb9f0407e5b17d3c601639d6aafedb0f32c06f5a46255d2da7e96899caafe6d",
+      "size_bytes": 577,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/continuous_deadline_curve.csv",
+      "sha256": "a7d76c2cc76ff0fdf905f06d44cf466594752798a117c9ed678c8e8a27c50954",
+      "size_bytes": 6052,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/convergence.csv",
+      "sha256": "2356ab2b9658524411a7ebee2893d2cbb375b58bf6275cbca6748614bf327e3a",
+      "size_bytes": 618,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/deadline_summary.csv",
+      "sha256": "b62ce09a3d3b2d928a740486ec9454d4570ca2a1a5f3529ff0088e0c94c96067",
+      "size_bytes": 849,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/delivery_response.csv",
+      "sha256": "709d2f89ff3dcc82dea583da977de865c4f878c7a98f1ec41127f169d2659a66",
+      "size_bytes": 64680,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/design_constraints_maxima.csv",
+      "sha256": "3087355b5bea15eddb682e853680bc3f5c55cad085309c9453cc9158fe1a6ab2",
+      "size_bytes": 54589,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/design_constraints_targets.csv",
+      "sha256": "8f70d3adccf9dc634e397d2876ce5684fed114aa8726eb886d00d67a7446edf3",
+      "size_bytes": 98653,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/diffusivity_sensitivity.csv",
+      "sha256": "c0c9fb5d0f6ddfef9221a452cfae7f15f524075650e9f7002f7be0dec1ae90f7",
+      "size_bytes": 469,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/dose_area_frontier.csv",
+      "sha256": "488faafcfe2fdd84a346928ce066001d0b02bfba6a3608d3bb828a091e32f6fd",
+      "size_bytes": 35383,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/frontier_targets.csv",
+      "sha256": "32bd31a1f0dae43c53fb5c05ccf437d070fdd01d214147cbd0d63f3d47fa0827",
+      "size_bytes": 1749,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/frontier_verification.csv",
+      "sha256": "e0ad17e2d3849f90a08806c69a88dd7835bf387df0bd13716a2264f604db877a",
+      "size_bytes": 10466,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/mechanism_comparison.csv",
+      "sha256": "58322ef9ea9f431b3b39050a52ec5bf6dfebcb4486ec027acf16ef73ed58bb04",
+      "size_bytes": 4687,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/placement_sensitivity.csv",
+      "sha256": "101c575661fde8dab54d1911066a7b49488e10213ffe7d8999f6e1f97ad0db0d",
+      "size_bytes": 931,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/robustness_frontier.csv",
+      "sha256": "78c82d248cbba5d9df1ee15ae50cb0a6172df691236fa4f0b55520c0919c1bda",
+      "size_bytes": 162251,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/robustness_map.csv",
+      "sha256": "863d198113210104dda1d2ed2c518230a2dc6c4a6a795e4488f54e317a9f771c",
+      "size_bytes": 2336243,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/robustness_ordering.csv",
+      "sha256": "812a6961fedbfa9f255245f5e39bf3541390250934ae6e2b481973d673e30ca8",
+      "size_bytes": 1402,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/robustness_reviewer_checks.csv",
+      "sha256": "e9183bdfb572fe59e750c89eff285baca35029f066e9dbc25dee352d82e55ef8",
+      "size_bytes": 603,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/robustness_targets.csv",
+      "sha256": "bb4a393200b0672d4c95a3387148a735a23ecefc8a25bc34ab717bd3779cafcd",
+      "size_bytes": 10911,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/robustness_verification.csv",
+      "sha256": "8ff5fa9582e2c63a9b615540ecabf30d186d027af4def561cac5f8e0a67ce4b5",
+      "size_bytes": 41388,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "data/sensitivity_verification.csv",
+      "sha256": "081cbf5979bf749c546f1e4fcbc62d151fd02b51f374ab50dffcdacfc3613348",
+      "size_bytes": 437,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "design_constraints_specification.json",
+      "sha256": "be2c3dbdc19b3d63397f87f3ef125929987e01a23658088c57c3f46151416689",
+      "size_bytes": 7486,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/design_constraints_selection_trace.json",
+      "sha256": "f56e6babadf0b59d85d3c02acd8cac6856e62d3af2ec706b8fc15aabc47bbfaa",
+      "size_bytes": 1815643,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/design_constraints_verification.json",
+      "sha256": "90a7464e5a95ab20189a00948cbf3911bfcfd85eaadb72455daa8af2707ac3ef",
+      "size_bytes": 14421,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/frontier_selection_correction.json",
+      "sha256": "5a4efb2fcc69d3d02416ffd30cd7895fc6dd2d94750419fb78df7251c5fb5593",
+      "size_bytes": 1043,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/numerical_primary_verified.json",
+      "sha256": "8620a6824802da56543c6398a0a274161dbd6c40e57b5b0791ee05fac78e61b2",
+      "size_bytes": 4263,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/numerical_roots.json",
+      "sha256": "30c7343b40ee36a1bb2a9b9af0c9a639631a7c3c11848fd9f5fe1c1921d7b772",
+      "size_bytes": 11972,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/numerical_summary.txt",
+      "sha256": "7378285f1e3baec3e6cd12a0953a43a3b2e35b9caaa392841359c97c74c51189",
+      "size_bytes": 2283,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/numerical_verification.json",
+      "sha256": "0eb82bb474543143e963505e26497920653d692c833d1a320b8e949d62a408d4",
+      "size_bytes": 5611,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/oxygen_accounting.csv",
+      "sha256": "7691b523c8f3a5c2cf6bb51ae23ca4b5eeb862aa2994c78bc57a0a6a076e9573",
+      "size_bytes": 2038,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/prior_art_review.md",
+      "sha256": "31ce8469fa578802eb97faf43615da33f5462c99e350dce67bf6a20f5551015c",
+      "size_bytes": 7659,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/prior_art_review_v2.md",
+      "sha256": "2c3d25f9280e4ddd20f4b2d17a90f676f815aec2897dec715ea6ebe47e5056d2",
+      "size_bytes": 10690,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/proposed_validation.md",
+      "sha256": "5c5ede0f989b9c00f30f5186d0aad289c5936f0f77092e3b88f946a5f3b94bc7",
+      "size_bytes": 7386,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/robustness_verification.json",
+      "sha256": "839a89be55dc02060a32ff515b3dbef8351f17faff435bfef38485b63940b4ba",
+      "size_bytes": 40889,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/robustness_waveform.json",
+      "sha256": "57b0f3a06f551f4f9d144c3563a93714465e7c017f540a0cdc155be2dfc28f30",
+      "size_bytes": 672,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/source_qualification.md",
+      "sha256": "4fc211125b64b24dae5185806f720f1b1100b6afc8a750ee2f244e55d39e8a01",
+      "size_bytes": 8619,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "evidence/workbook_inventory.json",
+      "sha256": "554c69e34e8f5d71b39eab313cf7a6bd6ddb9ee6cdda90905037062bdd6c26f4",
+      "size_bytes": 3133,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/deadline_delivery.pdf",
+      "sha256": "f50490944189f915ab33d266a759a12b26c5aa4d159396554a1bb5936f0933c3",
+      "size_bytes": 14561,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/deadline_delivery.png",
+      "sha256": "2c45c8ae9545d0df1b7eee8009c0f50e1e79ec67be8ef71c616e083e69e42d31",
+      "size_bytes": 49152,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/design_constraints.pdf",
+      "sha256": "09eaf6ce76290394aa90e82280d69d599264b88fc3d95d32590b65abf07014db",
+      "size_bytes": 29309,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/design_constraints.png",
+      "sha256": "5c0427852403419da792753f35d35ae723cf4ba5622a4803044c57092bee7907",
+      "size_bytes": 209617,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/dose_area_frontier.pdf",
+      "sha256": "f9728d9f2ed1f225daf67d81e9e44bb9a4e4b096546d7313ba4be5ddbc0198a0",
+      "size_bytes": 22044,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/dose_area_frontier.png",
+      "sha256": "5822d0349cb1c6346b0b2b8a2215b0f94a219008accd2b8651af7f6b8090e561",
+      "size_bytes": 147814,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/geometry_schematic.pdf",
+      "sha256": "9b6c034e66264c2b4c6b1f0e78eebf0aaececbcb089b7ea1cb8a8b098b49dcf5",
+      "size_bytes": 23608,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/geometry_schematic.png",
+      "sha256": "71f2d01f964947992572c54fbb76b4b74ccf1df933565c65e72bc5919fe7a4c9",
+      "size_bytes": 112152,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/production_delivery.pdf",
+      "sha256": "ac13f2cad12a0f27f41bb96f2c22e30521c22bd3675a674979762f00cc467fa1",
+      "size_bytes": 17919,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/production_delivery.png",
+      "sha256": "5e1cf9a996ec7e80c315ffb2fa8ad1abc9bb1967b87e01f9edaa61692c405bcb",
+      "size_bytes": 131781,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/robustness_frontier.pdf",
+      "sha256": "c1f238d28e94584de7e389da9eb6da40a44b28806ca8e85b9b36c6da318328e2",
+      "size_bytes": 24077,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "figures/robustness_frontier.png",
+      "sha256": "8e35a182429a7c8b5ccb09585789c309a3fb1f9c1c474515d1792ea2413eef11",
+      "size_bytes": 123178,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "geometry_ledger.csv",
+      "sha256": "b4c62e15a72830e01cbee6e6f93260cf24ae8ac12af571ab446c2563833fc12b",
+      "size_bytes": 3844,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/design_constraints.png",
+      "sha256": "5c0427852403419da792753f35d35ae723cf4ba5622a4803044c57092bee7907",
+      "size_bytes": 209617,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/dose_area_frontier.png",
+      "sha256": "5822d0349cb1c6346b0b2b8a2215b0f94a219008accd2b8651af7f6b8090e561",
+      "size_bytes": 147814,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/equation_01.png",
+      "sha256": "8be6cb5fb1521ffde6238e25fb9c676bd388a9df745d51c1a4ebeb2855ead3ff",
+      "size_bytes": 7592,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/equation_02.png",
+      "sha256": "5043606a3c823a4045baf5db8afee935d87fec172679649d3804cfd4098ba621",
+      "size_bytes": 9617,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/equation_03.png",
+      "sha256": "d0215f3abcd9384e8713821dff1bde80064b2cbc29d82c46d6e19ab10ec1fca0",
+      "size_bytes": 8509,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/equation_04.png",
+      "sha256": "f898c41ef9cfd34819308f006b7d2d2329ed87d158f2bdc39600e3030fabb055",
+      "size_bytes": 11091,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/equation_05.png",
+      "sha256": "3b0c3749874bff97dd60b5b41e64310c06643e725e9d8a8a27f122e069dc9517",
+      "size_bytes": 9163,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/equation_06.png",
+      "sha256": "025e3bc2374f008d0e1e1c4d686b059d9f5b5cb30117c99562d62a41a602e44a",
+      "size_bytes": 16329,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/equation_07.png",
+      "sha256": "cd16ef0163c1d0aa0b0a0559d6ba965f2c89ea0a5d177a36bfc866276fd5ba21",
+      "size_bytes": 4556,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/geometry_schematic.png",
+      "sha256": "71f2d01f964947992572c54fbb76b4b74ccf1df933565c65e72bc5919fe7a4c9",
+      "size_bytes": 112152,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/production_delivery.png",
+      "sha256": "5e1cf9a996ec7e80c315ffb2fa8ad1abc9bb1967b87e01f9edaa61692c405bcb",
+      "size_bytes": 131781,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/assets/robustness_frontier.png",
+      "sha256": "8e35a182429a7c8b5ccb09585789c309a3fb1f9c1c474515d1792ea2413eef11",
+      "size_bytes": 123178,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/content.json",
+      "sha256": "5f7081175fe579e9068c3fc29c01949f0bd49920a5dbb8a879ad0443fc1a36dd",
+      "size_bytes": 36057,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/main.tex",
+      "sha256": "c5f342d097dcb59728e3cf4d8fb6f738ab91a56e81054d504a1aadd08d5cc209",
+      "size_bytes": 94,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/paper.docx",
+      "sha256": "75c4c1d591a023059dea831e4124ef2b3681207d7a3659f99a456b14a3170104",
+      "size_bytes": 687471,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/paper.pdf",
+      "sha256": "9674f1c02b5ca0e5c141a05af084cdac77b43efdde34ea26753496e9fedc1ed7",
+      "size_bytes": 736246,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "manuscript/paper.tex",
+      "sha256": "da0ffb64a9500aee0824229da2e4d3c017c36eb902307dc14a7211cd97f8e6b1",
+      "size_bytes": 34953,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "model_specification.json",
+      "sha256": "e1a5f46cdddaa4fbf75dc2745bbd8303ff4c8b81ea99cfccdd49ab91da9038bc",
+      "size_bytes": 4682,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "README.md",
+      "sha256": "129cbfd9f3ea88c9a92869f6a8a003899a7acf3604884d4f7322b8b1b4c28713",
+      "size_bytes": 8354,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "REPORT.md",
+      "sha256": "b99cea3ecbff26b83d35dc2ad4a7d44f1b7d283a5f68721ab2a89cfc8709b44a",
+      "size_bytes": 1767,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "reproduce.py",
+      "sha256": "c11a764a26887fb1473a7b3950bf67fdc851cebb324af9bc9956e2fcdabe760c",
+      "size_bytes": 6396,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "reproduction_comparison_specification.json",
+      "sha256": "b02f72dec758f6b8b6d969495585ae22346df8c12a01ef9d76bebfc5118eff17",
+      "size_bytes": 146385,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "requirements-lock.txt",
+      "sha256": "bfa3fec747aa601ec3df24462f5759a9e9b714c3bc42fadf0235700cb973c388",
+      "size_bytes": 349,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "requirements-manuscript.txt",
+      "sha256": "454f2c3a74e19ee1e92d28dd2cdb6b2e592c5fb2e443d280699e3bea49aa883b",
+      "size_bytes": 66,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "44bf077d8361612d8ca3e586753dfca8b3b92f2ff7ab762a9cdcea467b02fb0d",
+      "size_bytes": 25,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "RESPONSE_TO_REVIEW.md",
+      "sha256": "04da3c272d39cc020dbc84a3a1611db36fbe01e1af99b04aa13aceeabbfa7fb2",
+      "size_bytes": 3858,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "REVIEW_NOTES.md",
+      "sha256": "2d9212a1e2159e2e6aaeabefcb0cb43fa1fbb119d530916010cb90f7e261ecea",
+      "size_bytes": 6021,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "robustness_specification.json",
+      "sha256": "3a2013c3c6adfb42123b6858e9755c73b2422f125c4d18f772bcec0fba67eb7c",
+      "size_bytes": 5240,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    },
+    {
+      "path": "sources.tsv",
+      "sha256": "62172e4f57059743763f10db4b300fa4bd2dce5d2efe343f7676d23b8897e609",
+      "size_bytes": 7476,
+      "relationship": "CONDITIONAL_TRANSPORT_AND_REPRODUCTION"
+    }
+  ]
+}

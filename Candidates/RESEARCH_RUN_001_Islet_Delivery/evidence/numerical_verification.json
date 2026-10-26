@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0",
+  "status": "supported",
+  "eta30_continuum_truncated": 0.7152697980076386,
+  "eta30_finest_FV": 0.7152579682163074,
+  "estimated_numerical_uncertainty_eta": 3.219055823966421e-05,
+  "estimated_interval_eta": [
+    0.7152376074493989,
+    0.7153019885658782
+  ],
+  "interval_status": "numerical estimate, not a formally certified enclosure",
+  "modal_omitted_tail_bound_eta": 2.7518461637101773e-06,
+  "FV_refinement_difference": 3.219055823966421e-05,
+  "independent_method_difference": 1.1829791331186001e-05,
+  "volume_ml": 7.793113276311181,
+  "effective_density_IEQ_per_ml": 53893.73734328731,
+  "nominal_60000_density_payload_IEQ": 467586.79657867085,
+  "side_area_cm2": 115.45353001942489,
+  "critical_D_m2_per_s_for_eta30_0_80": 4.5154547076651807e-10,
+  "reflecting_ends_eta30": 0.711893620192878,
+  "inventory_fraction_at_shutoff": 0.28473020199236143,
+  "fraction_recovered_120min_after_shutoff": 0.9999914762184823,
+  "source_rate_capacity_multiplier_at_30min": 1.398073849595591,
+  "quadrature_checks": [
+    {
+      "order": 512,
+      "max_weight_error": 1.887379141862766e-15,
+      "sum_absolute_weight_error": 1.8311161641875254e-14
+    },
+    {
+      "order": 1024,
+      "max_weight_error": 6.952771691715043e-15,
+      "sum_absolute_weight_error": 3.9863538902132345e-14
+    }
+  ],
+  "field_audits": [
+    {
+      "time_s": 300,
+      "steady": false,
+      "min_concentration_source_seconds": 3.0540155390798476,
+      "max_concentration_source_seconds": 285.3030579277349,
+      "inventory_source_seconds": 201.35884187031633,
+      "boundary_flux_over_source_rate": 0.48805179887267336,
+      "cumulative_boundary_flux_source_seconds": 98.64115812964478,
+      "independent_face_integral_mass_error_source_seconds": 3.8895109355507884e-11,
+      "inventory_spectral_discrepancy": -5.684341886080802e-14,
+      "flux_spectral_discrepancy": -2.2470914018413168e-13,
+      "algebraic_mass_identity_error_source_seconds": 0.0
+    },
+    {
+      "time_s": 1800,
+      "steady": false,
+      "min_concentration_source_seconds": 3.834655567835148,
+      "max_concentration_source_seconds": 803.7183952723229,
+      "inventory_source_seconds": 512.8122747336181,
+      "boundary_flux_over_source_rate": 0.9420027591313724,
+      "cumulative_boundary_flux_source_seconds": 1287.187725265712,
+      "independent_face_integral_mass_error_source_seconds": 6.698428478557616e-10,
+      "inventory_spectral_discrepancy": 3.410605131648481e-13,
+      "flux_spectral_discrepancy": -5.170308625679354e-13,
+      "algebraic_mass_identity_error_source_seconds": 0.0
+    },
+    {
+      "time_s": 3600,
+      "steady": false,
+      "min_concentration_source_seconds": 0.049577317571106,
+      "max_concentration_source_seconds": 62.78002598580416,
+      "inventory_source_seconds": 37.16244945381213,
+      "boundary_flux_over_source_rate": 0.05368854055795884,
+      "cumulative_boundary_flux_source_seconds": 1762.837550545212,
+      "independent_face_integral_mass_error_source_seconds": 9.75887815002352e-10,
+      "inventory_spectral_discrepancy": 0.0,
+      "flux_spectral_discrepancy": -3.4833247397614286e-14,
+      "algebraic_mass_identity_error_source_seconds": 0.0
+    },
+    {
+      "time_s": 9000,
+      "steady": false,
+      "min_concentration_source_seconds": 1.1361612337220641e-05,
+      "max_concentration_source_seconds": 0.026537942913654147,
+      "inventory_source_seconds": 0.015349793193325512,
+      "boundary_flux_over_source_rate": 2.2134628367285093e-05,
+      "cumulative_boundary_flux_source_seconds": 1799.984650205809,
+      "independent_face_integral_mass_error_source_seconds": 9.977156878449023e-10,
+      "inventory_spectral_discrepancy": 1.734723475976807e-18,
+      "flux_spectral_discrepancy": -1.4389395707956054e-17,
+      "algebraic_mass_identity_error_source_seconds": 0.0
+    },
+    {
+      "time_s": 1800,
+      "steady": true,
+      "min_concentration_source_seconds": 3.8871869922683224,
+      "max_concentration_source_seconds": 871.5923357623822,
+      "inventory_source_seconds": 552.9603643375051,
+      "boundary_flux_over_source_rate": 0.9999999999994457,
+      "cumulative_boundary_flux_source_seconds": null,
+      "independent_face_integral_mass_error_source_seconds": null
+    }
+  ],
+  "root_bracketing": "pi/8 dimensionless steps, all sign changes retained in ascending order; Brent xtol 1e-12",
+  "max_root_residual": 1.6792123247455493e-15,
+  "minimum_radial_modal_weight": 1.3850530900094895e-05,
+  "radial_modal_weight_sum": 0.9982409618932863,
+  "axial_modal_weight_sum": 0.9992084292593244,
+  "frontier_max_omitted_tail_eta_bound": 5.505449765553057e-06,
+  "frontier_max_refinement_eta_difference": 1.7405784494828325e-06,
+  "frontier_threshold_neighbors": "All selected points and next thicker grid neighbors confirmed at 512 radial and 1024 axial modes; lower truncation bounds govern initial selection",
+  "frontier_global_grid_minimum_check": "Every strictly lower-area grid competitor has an upper truncated eta below its target; no monotonicity assumption used",
+  "sensitivity_max_grid_eta_difference": 6.348102804976108e-05,
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "model_specification_sha256": "e1a5f46cdddaa4fbf75dc2745bbd8303ff4c8b81ea99cfccdd49ab91da9038bc",
+  "checks": "All numerical assertions passed; no experimental or clinical validation implied"
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-26",
+  "status": "preliminary_selection_rejected_before_final_results",
+  "target_eta": 0.8,
+  "deadline_min": 15,
+  "thickness_mm": 0.42,
+  "coarse_radial_modes": 64,
+  "coarse_axial_odd_modes": 128,
+  "coarse_eta": 0.8000085435382928,
+  "refined_radial_modes": 256,
+  "refined_axial_odd_modes": 512,
+  "refined_eta": 0.7999964921167247,
+  "difference": -1.2051421568015641e-05,
+  "cause": "Positive modal truncation overestimates eta; a point estimate just above the threshold was not sufficient to select the design.",
+  "detection": "Mandatory refined selected-point and neighbor assertions stopped the reproduction before final verification report or figures.",
+  "repair": "Use128/256 across grid; select using explicit omitted-tail lower bound; check selected points and next thicker neighbors at256/512 and512/1024. Threshold and physical model unchanged.",
+  "main_H1_result_affected": false,
+  "model_specification_sha256": "e1a5f46cdddaa4fbf75dc2745bbd8303ff4c8b81ea99cfccdd49ab91da9038bc"
+}

@@ -1,0 +1,25 @@
+parameter_id,quantity,value,units,status,source_id,source_location,derivation,limitation
+G01,pouch_count,7,pouches,source_reported,S1-SUPP,Supplementary Figure 24; PDF page 21,,Proposed human configuration; not clinical measurement
+G02,pouch_outer_diameter,7.5,mm,source_reported,S1-SUPP,Supplementary Figure 24; PDF page 21,,Approximate source dimensions
+G03,cell_layer_thickness,0.75,mm,source_reported,S1-SUPP,Supplementary Figure 24; PDF page 21,,Annular idealization; source end shape rounded
+G04,active_length_per_pouch,70.0,mm,source_reported_and_idealized,S1-SUPP,Supplementary Figure 24; PDF page 21,,Treat full indicated length as straight active annulus
+G05,pouch_separation,1.0,mm,source_reported,S1-SUPP,Supplementary Figure 24; PDF page 21,,Clear gap for single-row parallel layout
+G06,intended_human_payload,420000.0,IEQ,source_reported,S1-SUPP,Supplementary Figure 24; PDF page 21,,"IEQ is volume normalized, not cluster count or potency"
+G07,source_loading_density,60000.0,IEQ/mL,source_reported,S1-SUPP,Supplementary Figure 24; PDF page 21,,Not reconciled with stated 420000 IEQ and full nominal volume
+G08,source_rounded_volume_per_pouch,1.11,mL,source_reported,S1-SUPP,Supplementary Figure 24; PDF page 21,,Rounded volume
+G09,outer_radius,3.75,mm,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,G02 / 2,
+G10,inner_radius,3.0,mm,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,G09 - G03,
+G11,annular_cross_section,15.904312808798327,mm2,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,pi*(G09^2-G10^2),
+G12,nominal_volume_per_pouch,1.113301896615883,mL,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,G11*G04/1000,Straight annulus omits detailed rounded ends and connector intrusion
+G13,nominal_total_cell_compartment_volume,7.79311327631118,mL,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,G12*G01,Same idealization
+G14,full_nominal_payload_at_source_density,467586.7965786708,IEQ,secondary_case,S1-SUPP,Supplementary Figure 24; PDF page 21,G13*G07,Separate case; not substituted for stated payload
+G15,rounded_volume_payload_at_source_density,466200.0,IEQ,derived_discrepancy,S1-SUPP,Supplementary Figure 24; PDF page 21,G08*G01*G07,466200 IEQ differs from stated 420000 IEQ
+G16,effective_uniform_density_primary,53893.737343287314,IEQ/mL,model_normalization,S1-SUPP,Supplementary Figure 24; PDF page 21,G06/G13,Preserves reported dose in full nominal model volume; not measured fill density
+G17,volume_required_at_source_density,7.0,mL,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,G06/G07,Alternative occupied-volume interpretation; not assumed as fact
+G18,fraction_nominal_volume_for_reported_dose,0.8982289557214552,fraction,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,G17/G13,Unresolved effective fill explanation
+G19,outer_lateral_exchange_area,115.45353001942489,cm2,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,2*pi*G09*G04*G01/100,Excludes annular ends and overhead
+G20,both_annular_end_area,2.226603793231766,cm2,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,2*G01*G11/100,Both ends are perfect sinks only in favorable model
+G21,baseline_active_row_width,58.5,mm,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,G01*G02+(G01-1)*G05,Single-row bounding width
+G22,baseline_active_rectangular_footprint,40.95,cm2,derived,S1-SUPP,Supplementary Figure 24; PDF page 21,G21*G04/100,Excludes generator and connectors; not total implant footprint
+G23,illustrated_total_length_with_overhead,88.0,mm,source_figure_label,S1-SUPP,Supplementary Figure 24; PDF page 21,,Source illustration; not imposed on redesigned layouts
+G24,illustrated_total_bounding_footprint,51.48,cm2,derived_from_figure_labels,S1-SUPP,Supplementary Figure 24; PDF page 21,88*58.5/100,Illustrated baseline bound includes source overhead; does not prove buildability

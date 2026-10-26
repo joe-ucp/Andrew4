@@ -1,0 +1,4 @@
+# Preserve supplied scientific artifacts byte for byte on every platform.
+# Generated narrative newline equivalence is defined by the comparison contract.
+# Do not renormalize frozen files; core.autocrlf must not rewrite release bytes.
+* -text

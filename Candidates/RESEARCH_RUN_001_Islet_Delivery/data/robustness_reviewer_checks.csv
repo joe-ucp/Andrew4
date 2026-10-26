@@ -1,0 +1,7 @@
+check,thickness_mm,D_m2_s,P_m_s,ends,eta30,tail_bound_eta
+h060_favorable,0.6,3e-10,infinite,absorbing,0.8020615681190849,4.146525614036078e-08
+h060_reflecting_ends,0.6,3e-10,infinite,reflecting,0.7999337712988445,1.1063525321835769e-10
+h060_D_reduced_5percent,0.6,2.85e-10,infinite,absorbing,0.7924970500107466,4.364763804248504e-08
+h060_D_1e10,0.6,1e-10,infinite,absorbing,0.5522763883388382,1.2439576842108234e-07
+h061_favorable,0.61,3e-10,infinite,absorbing,0.7962988562968596,4.161063411009076e-08
+h075_original_nominal,0.75,3e-10,infinite,absorbing,0.7152689277184139,4.3488156269874665e-08

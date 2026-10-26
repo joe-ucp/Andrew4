@@ -1,0 +1,5174 @@
+{
+  "schema_version": "1.1",
+  "purpose": "Numerical regeneration equivalence, separate from supplied-release byte integrity and scientific uncertainty. Original three specifications remain unchanged.",
+  "freeze_policy": "Frozen before acceptance tests; helper checks this exact contract hash. No rounding/substitution of regenerated results.",
+  "numeric_profiles": {
+    "exact_number": {
+      "atol": 0,
+      "rtol": 0,
+      "comparison": "Exact Decimal-valued identity"
+    },
+    "fraction": {
+      "atol": 1e-11,
+      "rtol": 0,
+      "units": "dimensionless delivery, normalized flux, weights, tails or numerical errors"
+    },
+    "resource": {
+      "atol": 1e-10,
+      "rtol": 1e-12,
+      "units": "explicit geometry/resource units or Fo/Bi"
+    },
+    "source_seconds": {
+      "atol": 1e-08,
+      "rtol": 1e-12,
+      "units": "source-normalized seconds; original conservation limit remains separate"
+    },
+    "small_rate": {
+      "atol": 1e-22,
+      "rtol": 1e-10,
+      "units": "critical diffusivity or oxygen mol/s"
+    },
+    "spectral": {
+      "atol": 1e-10,
+      "rtol": 1e-12,
+      "units": "dimensionless root or eigenvalue per m^2"
+    },
+    "small_dimensional": {
+      "atol": 1e-18,
+      "rtol": 1e-10,
+      "units": "analytic radial normalization"
+    }
+  },
+  "csv": {
+    "data/boundary_sensitivity.csv": {
+      "headers": [
+        "scenario",
+        "permeability_m_per_s",
+        "parameter_status",
+        "eta30"
+      ],
+      "keys": [
+        "scenario",
+        "permeability_m_per_s"
+      ],
+      "row_count": 5,
+      "fields": {
+        "scenario": {
+          "type": "string",
+          "allowed_values": [
+            "Robin_outer_absorbing_ends",
+            "perfect_outer_and_end_sinks",
+            "perfect_outer_sink_reflecting_ends"
+          ]
+        },
+        "permeability_m_per_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": true
+        },
+        "parameter_status": {
+          "type": "string",
+          "allowed_values": [
+            "assumed sensitivity, not measured BEAM membrane permeability",
+            "favorable idealization",
+            "hypothetical end obstruction"
+          ]
+        },
+        "eta30": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "data/continuous_deadline_curve.csv": {
+      "headers": [
+        "deadline_min",
+        "eta_source_maintained_until_deadline"
+      ],
+      "keys": [
+        "deadline_min"
+      ],
+      "row_count": 240,
+      "fields": {
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta_source_maintained_until_deadline": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "data/convergence.csv": {
+      "headers": [
+        "method",
+        "radial_count",
+        "axial_count",
+        "eta30",
+        "difference_from_finest_continuum",
+        "modal_tail_bound_eta"
+      ],
+      "keys": [
+        "method",
+        "radial_count",
+        "axial_count"
+      ],
+      "row_count": 7,
+      "fields": {
+        "method": {
+          "type": "string",
+          "allowed_values": [
+            "continuum_modal",
+            "finite_volume"
+          ]
+        },
+        "radial_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "axial_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta30": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "difference_from_finest_continuum": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "modal_tail_bound_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "data/deadline_summary.csv": {
+      "headers": [
+        "deadline_min",
+        "eta_source_maintained_until_deadline",
+        "fixed_30min_pulse_fraction_recovered",
+        "required_mean_secretion_per_IEQ_per_min_per_unit_B",
+        "source_capacity_multiplier_vs_instant_delivery",
+        "modal_truncation_eta_bound"
+      ],
+      "keys": [
+        "deadline_min"
+      ],
+      "row_count": 6,
+      "fields": {
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta_source_maintained_until_deadline": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "fixed_30min_pulse_fraction_recovered": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "required_mean_secretion_per_IEQ_per_min_per_unit_B": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "source_capacity_multiplier_vs_instant_delivery": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "modal_truncation_eta_bound": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "data/delivery_response.csv": {
+      "headers": [
+        "time_s",
+        "time_min",
+        "production_rate_normalized",
+        "external_flux_normalized",
+        "cumulative_production_source_seconds",
+        "cumulative_delivery_source_seconds",
+        "retained_inventory_source_seconds",
+        "fixed_pulse_delivered_fraction",
+        "retained_fraction_of_total_pulse",
+        "normalization"
+      ],
+      "keys": [
+        "time_s"
+      ],
+      "row_count": 301,
+      "fields": {
+        "time_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "time_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "production_rate_normalized": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "external_flux_normalized": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "cumulative_production_source_seconds": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "cumulative_delivery_source_seconds": {
+          "type": "number",
+          "profile": "source_seconds",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "retained_inventory_source_seconds": {
+          "type": "number",
+          "profile": "source_seconds",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "fixed_pulse_delivered_fraction": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "retained_fraction_of_total_pulse": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "normalization": {
+          "type": "string",
+          "allowed_values": [
+            "total source rate=1 arbitrary amount/s; multiply amount columns by actual total source rate"
+          ]
+        }
+      }
+    },
+    "data/design_constraints_maxima.csv": {
+      "headers": [
+        "scenario_set",
+        "scenario_count",
+        "h_min_mm",
+        "deadline_min",
+        "eligible_design_count",
+        "maximum_worst_eta",
+        "maximum_worst_eta_lower_estimate",
+        "maximum_worst_eta_upper_estimate",
+        "point_maximizer_thickness_mm",
+        "point_maximizer_lateral_area_cm2",
+        "point_maximizer_worst_D_m2_s",
+        "point_maximizer_worst_P_m_s",
+        "point_maximizer_worst_end_condition",
+        "other_maximizer_interval_overlap_count",
+        "other_maximizer_interval_overlap_h_mm",
+        "constraint_status"
+      ],
+      "keys": [
+        "scenario_set",
+        "h_min_mm",
+        "deadline_min"
+      ],
+      "row_count": 273,
+      "fields": {
+        "scenario_set": {
+          "type": "string",
+          "allowed_values": [
+            "broad_discrete",
+            "near_nominal_discrete",
+            "nominal_favorable"
+          ]
+        },
+        "scenario_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "h_min_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eligible_design_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "maximum_worst_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "maximum_worst_eta_lower_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "maximum_worst_eta_upper_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "point_maximizer_thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "point_maximizer_lateral_area_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "point_maximizer_worst_D_m2_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "point_maximizer_worst_P_m_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": true
+        },
+        "point_maximizer_worst_end_condition": {
+          "type": "string",
+          "allowed_values": [
+            "absorbing",
+            "reflecting"
+          ]
+        },
+        "other_maximizer_interval_overlap_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "other_maximizer_interval_overlap_h_mm": {
+          "type": "string",
+          "allowed_values": [
+            ""
+          ]
+        },
+        "constraint_status": {
+          "type": "string",
+          "allowed_values": [
+            "hypothetical minimum thickness; physical value unassigned"
+          ]
+        }
+      }
+    },
+    "data/design_constraints_targets.csv": {
+      "headers": [
+        "scenario_set",
+        "scenario_count",
+        "h_min_mm",
+        "deadline_min",
+        "target_eta",
+        "status",
+        "eligible_design_count",
+        "lower_area_competitors_excluded",
+        "unresolved_competitor_count",
+        "maximum_worst_eta_upper_estimate",
+        "thickness_mm",
+        "minimum_eta",
+        "minimum_eta_lower_estimate",
+        "minimum_eta_upper_estimate",
+        "lateral_area_cm2",
+        "area_ratio_to_nominal",
+        "pouch_count",
+        "last_segment_mm",
+        "total_length_mm",
+        "active_bounding_footprint_cm2",
+        "worst_D_m2_s",
+        "worst_P_m_s",
+        "worst_end_condition",
+        "area_increase_percent_to_nominal",
+        "selected_at_h_min",
+        "selected_at_thickest_grid_boundary",
+        "thinner_than_150um_IEQ_reference_diameter"
+      ],
+      "keys": [
+        "scenario_set",
+        "h_min_mm",
+        "deadline_min",
+        "target_eta"
+      ],
+      "row_count": 546,
+      "fields": {
+        "scenario_set": {
+          "type": "string",
+          "allowed_values": [
+            "broad_discrete",
+            "near_nominal_discrete",
+            "nominal_favorable"
+          ]
+        },
+        "scenario_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "h_min_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "target_eta": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "status": {
+          "type": "string",
+          "allowed_values": [
+            "minimum within constrained grid and discrete scenario set",
+            "not attained within constrained grid"
+          ]
+        },
+        "eligible_design_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "lower_area_competitors_excluded": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "unresolved_competitor_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "maximum_worst_eta_upper_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "minimum_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "minimum_eta_lower_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "minimum_eta_upper_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "lateral_area_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "area_ratio_to_nominal": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "pouch_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "last_segment_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "total_length_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "active_bounding_footprint_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "worst_D_m2_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "worst_P_m_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": true,
+          "allow_infinite": true
+        },
+        "worst_end_condition": {
+          "type": "string",
+          "allowed_values": [
+            "",
+            "absorbing",
+            "reflecting"
+          ]
+        },
+        "area_increase_percent_to_nominal": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "selected_at_h_min": {
+          "type": "string",
+          "allowed_values": [
+            "",
+            "False",
+            "True"
+          ]
+        },
+        "selected_at_thickest_grid_boundary": {
+          "type": "string",
+          "allowed_values": [
+            "",
+            "False"
+          ]
+        },
+        "thinner_than_150um_IEQ_reference_diameter": {
+          "type": "string",
+          "allowed_values": [
+            "",
+            "False",
+            "True"
+          ]
+        }
+      }
+    },
+    "data/diffusivity_sensitivity.csv": {
+      "headers": [
+        "D_m2_per_s",
+        "eta30",
+        "status"
+      ],
+      "keys": [
+        "D_m2_per_s"
+      ],
+      "row_count": 7,
+      "fields": {
+        "D_m2_per_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta30": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "status": {
+          "type": "string",
+          "allowed_values": [
+            "specified sensitivity; not measured"
+          ]
+        }
+      }
+    },
+    "data/dose_area_frontier.csv": {
+      "headers": [
+        "thickness_mm",
+        "inner_radius_mm",
+        "payload_IEQ",
+        "density_IEQ_per_ml",
+        "cell_compartment_volume_ml",
+        "total_length_mm",
+        "pouch_count",
+        "full_70mm_pouches",
+        "last_segment_length_mm",
+        "side_exchange_area_cm2",
+        "annular_end_exchange_area_cm2",
+        "side_area_ratio_to_nominal",
+        "parallel_width_mm",
+        "bounding_footprint_cm2",
+        "eta15",
+        "eta30",
+        "eta60",
+        "eta15_truncation_lower",
+        "eta30_truncation_lower",
+        "eta60_truncation_lower",
+        "assumptions"
+      ],
+      "keys": [
+        "thickness_mm"
+      ],
+      "row_count": 91,
+      "fields": {
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "inner_radius_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "payload_IEQ": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "density_IEQ_per_ml": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "cell_compartment_volume_ml": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "total_length_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "pouch_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "full_70mm_pouches": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "last_segment_length_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "side_exchange_area_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "annular_end_exchange_area_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "side_area_ratio_to_nominal": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "parallel_width_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "bounding_footprint_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta15": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta30": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta60": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta15_truncation_lower": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta30_truncation_lower": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta60_truncation_lower": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "assumptions": {
+          "type": "string",
+          "allowed_values": [
+            "same D/uniform source/perfect sinks; minimum pouch count; generator and connectors excluded"
+          ]
+        }
+      }
+    },
+    "data/frontier_targets.csv": {
+      "headers": [
+        "deadline_min",
+        "target_eta",
+        "status",
+        "thickness_mm",
+        "side_exchange_area_cm2",
+        "area_ratio_to_nominal",
+        "pouch_count",
+        "last_segment_length_mm",
+        "eta_achieved"
+      ],
+      "keys": [
+        "deadline_min",
+        "target_eta"
+      ],
+      "row_count": 15,
+      "fields": {
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "target_eta": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "status": {
+          "type": "string",
+          "allowed_values": [
+            "grid minimum area"
+          ]
+        },
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "side_exchange_area_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "area_ratio_to_nominal": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "pouch_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "last_segment_length_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta_achieved": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "data/frontier_verification.csv": {
+      "headers": [
+        "thickness_mm",
+        "deadline_min",
+        "radial_modes",
+        "axial_modes",
+        "eta_refined",
+        "eta_original",
+        "difference"
+      ],
+      "keys": [
+        "thickness_mm",
+        "deadline_min",
+        "radial_modes",
+        "axial_modes"
+      ],
+      "row_count": 132,
+      "fields": {
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "radial_modes": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "axial_modes": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta_refined": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta_original": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "difference": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "data/mechanism_comparison.csv": {
+      "headers": [
+        "mechanism_case",
+        "scenario_count",
+        "h_min_mm",
+        "deadline_min",
+        "target_eta",
+        "status",
+        "eligible_design_count",
+        "lower_area_competitors_excluded",
+        "unresolved_competitor_count",
+        "maximum_worst_eta_upper_estimate",
+        "thickness_mm",
+        "minimum_eta",
+        "minimum_eta_lower_estimate",
+        "minimum_eta_upper_estimate",
+        "lateral_area_cm2",
+        "area_ratio_to_nominal",
+        "pouch_count",
+        "last_segment_mm",
+        "total_length_mm",
+        "active_bounding_footprint_cm2",
+        "worst_D_m2_s",
+        "worst_P_m_s",
+        "worst_end_condition",
+        "area_increase_percent_to_nominal",
+        "selected_at_h_min",
+        "selected_at_thickest_grid_boundary",
+        "thinner_than_150um_IEQ_reference_diameter",
+        "D_m2_s",
+        "P_m_s",
+        "end_condition",
+        "nominal_h_mm",
+        "eta_at_nominal_h",
+        "eta_lower_at_nominal_h",
+        "eta_upper_at_nominal_h",
+        "selected_Fo",
+        "selected_Bi",
+        "nominal_Fo",
+        "nominal_Bi",
+        "selected_h_over_outer_radius",
+        "selected_longest_segment_over_h",
+        "selected_remainder_over_h",
+        "nominal_h_over_outer_radius",
+        "nominal_segment_over_h",
+        "next_lower_area_h_mm",
+        "next_lower_area_eta",
+        "next_lower_area_eta_upper_estimate",
+        "max_upper_among_all_lower_area_competitors",
+        "minimum_target_margin_lower_estimate",
+        "comparison_status",
+        "additional_area_cm2_vs_favorable_reoptimization",
+        "additional_area_percent_vs_favorable_reoptimization"
+      ],
+      "keys": [
+        "mechanism_case"
+      ],
+      "row_count": 5,
+      "fields": {
+        "mechanism_case": {
+          "type": "string",
+          "allowed_values": [
+            "all_three",
+            "favorable",
+            "finite_P_only",
+            "lower_D_only",
+            "reflecting_ends_only"
+          ]
+        },
+        "scenario_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "h_min_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "target_eta": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "status": {
+          "type": "string",
+          "allowed_values": [
+            "minimum within constrained grid and discrete scenario set"
+          ]
+        },
+        "eligible_design_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "lower_area_competitors_excluded": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "unresolved_competitor_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "maximum_worst_eta_upper_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "minimum_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "minimum_eta_lower_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "minimum_eta_upper_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "lateral_area_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "area_ratio_to_nominal": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "pouch_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "last_segment_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "total_length_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "active_bounding_footprint_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "worst_D_m2_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "worst_P_m_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": true
+        },
+        "worst_end_condition": {
+          "type": "string",
+          "allowed_values": [
+            "absorbing",
+            "reflecting"
+          ]
+        },
+        "area_increase_percent_to_nominal": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "selected_at_h_min": {
+          "type": "string",
+          "allowed_values": [
+            "False"
+          ]
+        },
+        "selected_at_thickest_grid_boundary": {
+          "type": "string",
+          "allowed_values": [
+            "False"
+          ]
+        },
+        "thinner_than_150um_IEQ_reference_diameter": {
+          "type": "string",
+          "allowed_values": [
+            "False"
+          ]
+        },
+        "D_m2_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "P_m_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": true
+        },
+        "end_condition": {
+          "type": "string",
+          "allowed_values": [
+            "absorbing",
+            "reflecting"
+          ]
+        },
+        "nominal_h_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta_at_nominal_h": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta_lower_at_nominal_h": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta_upper_at_nominal_h": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "selected_Fo": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "selected_Bi": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": true
+        },
+        "nominal_Fo": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "nominal_Bi": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": true
+        },
+        "selected_h_over_outer_radius": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "selected_longest_segment_over_h": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "selected_remainder_over_h": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "nominal_h_over_outer_radius": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "nominal_segment_over_h": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "next_lower_area_h_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "next_lower_area_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "next_lower_area_eta_upper_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "max_upper_among_all_lower_area_competitors": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "minimum_target_margin_lower_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "comparison_status": {
+          "type": "string",
+          "allowed_values": [
+            "separate conditional reoptimization; resource changes are nonadditive"
+          ]
+        },
+        "additional_area_cm2_vs_favorable_reoptimization": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "additional_area_percent_vs_favorable_reoptimization": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "data/placement_sensitivity.csv": {
+      "headers": [
+        "source",
+        "occupied_shell_width_mm",
+        "eta30",
+        "density_multiplier_for_same_dose",
+        "local_density_IEQ_per_ml",
+        "ideal_IEQ_reference_volume_fraction",
+        "payload_IEQ",
+        "physical_status"
+      ],
+      "keys": [
+        "source"
+      ],
+      "row_count": 4,
+      "fields": {
+        "source": {
+          "type": "string",
+          "allowed_values": [
+            "outer_0.10mm",
+            "outer_half_thickness",
+            "outer_quarter_thickness",
+            "uniform"
+          ]
+        },
+        "occupied_shell_width_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta30": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "density_multiplier_for_same_dose": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "local_density_IEQ_per_ml": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "ideal_IEQ_reference_volume_fraction": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "payload_IEQ": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "physical_status": {
+          "type": "string",
+          "allowed_values": [
+            "hypothetical continuous source; packing and oxygen feasibility not established"
+          ]
+        }
+      }
+    },
+    "data/robustness_frontier.csv": {
+      "headers": [
+        "scenario_set",
+        "scenario_count",
+        "thickness_mm",
+        "deadline_min",
+        "minimum_eta",
+        "minimum_eta_lower_estimate",
+        "minimum_eta_upper_estimate",
+        "worst_D_m2_s",
+        "worst_P_m_s",
+        "worst_end_condition",
+        "lateral_area_cm2",
+        "area_ratio_to_nominal",
+        "pouch_count",
+        "last_segment_mm",
+        "total_length_mm",
+        "active_bounding_footprint_cm2"
+      ],
+      "keys": [
+        "scenario_set",
+        "thickness_mm",
+        "deadline_min"
+      ],
+      "row_count": 819,
+      "fields": {
+        "scenario_set": {
+          "type": "string",
+          "allowed_values": [
+            "broad_discrete",
+            "near_nominal_discrete",
+            "nominal_favorable"
+          ]
+        },
+        "scenario_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "minimum_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "minimum_eta_lower_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "minimum_eta_upper_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "worst_D_m2_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "worst_P_m_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": true
+        },
+        "worst_end_condition": {
+          "type": "string",
+          "allowed_values": [
+            "absorbing",
+            "reflecting"
+          ]
+        },
+        "lateral_area_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "area_ratio_to_nominal": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "pouch_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "last_segment_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "total_length_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "active_bounding_footprint_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "data/robustness_map.csv": {
+      "headers": [
+        "thickness_mm",
+        "D_m2_s",
+        "P_m_s",
+        "end_condition",
+        "deadline_min",
+        "eta",
+        "eta_lower_estimate",
+        "eta_upper_estimate",
+        "omitted_tail_bound_eta",
+        "floating_guard_eta",
+        "payload_IEQ",
+        "density_IEQ_per_ml",
+        "volume_ml",
+        "lateral_area_cm2",
+        "end_area_cm2",
+        "area_ratio_to_nominal",
+        "total_length_mm",
+        "pouch_count",
+        "last_segment_mm",
+        "parallel_width_mm",
+        "active_bounding_footprint_cm2",
+        "thinner_than_150um_IEQ_reference_diameter",
+        "parameter_status"
+      ],
+      "keys": [
+        "thickness_mm",
+        "D_m2_s",
+        "P_m_s",
+        "end_condition",
+        "deadline_min"
+      ],
+      "row_count": 6552,
+      "fields": {
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "D_m2_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "P_m_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": true
+        },
+        "end_condition": {
+          "type": "string",
+          "allowed_values": [
+            "absorbing",
+            "reflecting"
+          ]
+        },
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta_lower_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "eta_upper_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "omitted_tail_bound_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "floating_guard_eta": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "payload_IEQ": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "density_IEQ_per_ml": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "volume_ml": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "lateral_area_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "end_area_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "area_ratio_to_nominal": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "total_length_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "pouch_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "last_segment_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "parallel_width_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "active_bounding_footprint_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "thinner_than_150um_IEQ_reference_diameter": {
+          "type": "string",
+          "allowed_values": [
+            "False",
+            "True"
+          ]
+        },
+        "parameter_status": {
+          "type": "string",
+          "allowed_values": [
+            "assumed discrete scenario; no probability or continuous-box guarantee"
+          ]
+        }
+      }
+    },
+    "data/robustness_ordering.csv": {
+      "headers": [
+        "thickness_mm",
+        "deadline_min",
+        "minimum_eta",
+        "worst_D_m2_s",
+        "worst_P_m_s",
+        "worst_end_condition",
+        "scope"
+      ],
+      "keys": [
+        "thickness_mm",
+        "deadline_min"
+      ],
+      "row_count": 12,
+      "fields": {
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "minimum_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "worst_D_m2_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "worst_P_m_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "worst_end_condition": {
+          "type": "string",
+          "allowed_values": [
+            "reflecting"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "allowed_values": [
+            "observed ordering within evaluated discrete scenarios only"
+          ]
+        }
+      }
+    },
+    "data/robustness_reviewer_checks.csv": {
+      "headers": [
+        "check",
+        "thickness_mm",
+        "D_m2_s",
+        "P_m_s",
+        "ends",
+        "eta30",
+        "tail_bound_eta"
+      ],
+      "keys": [
+        "check"
+      ],
+      "row_count": 6,
+      "fields": {
+        "check": {
+          "type": "string",
+          "allowed_values": [
+            "h060_D_1e10",
+            "h060_D_reduced_5percent",
+            "h060_favorable",
+            "h060_reflecting_ends",
+            "h061_favorable",
+            "h075_original_nominal"
+          ]
+        },
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "D_m2_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "P_m_s": {
+          "type": "string",
+          "allowed_values": [
+            "infinite"
+          ]
+        },
+        "ends": {
+          "type": "string",
+          "allowed_values": [
+            "absorbing",
+            "reflecting"
+          ]
+        },
+        "eta30": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "tail_bound_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "data/robustness_targets.csv": {
+      "headers": [
+        "scenario_set",
+        "deadline_min",
+        "target_eta",
+        "status",
+        "unresolved_competitors",
+        "thickness_mm",
+        "minimum_eta",
+        "minimum_eta_lower_estimate",
+        "lateral_area_cm2",
+        "area_ratio_to_nominal",
+        "pouch_count",
+        "last_segment_mm",
+        "total_length_mm",
+        "active_bounding_footprint_cm2",
+        "worst_D_m2_s",
+        "worst_P_m_s",
+        "worst_end_condition",
+        "thinner_than_150um_IEQ_reference_diameter",
+        "at_thickest_grid_boundary"
+      ],
+      "keys": [
+        "scenario_set",
+        "deadline_min",
+        "target_eta"
+      ],
+      "row_count": 45,
+      "fields": {
+        "scenario_set": {
+          "type": "string",
+          "allowed_values": [
+            "broad_discrete",
+            "near_nominal_discrete",
+            "nominal_favorable"
+          ]
+        },
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "target_eta": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "status": {
+          "type": "string",
+          "allowed_values": [
+            "minimum within grid and discrete scenario set",
+            "not attained in grid"
+          ]
+        },
+        "unresolved_competitors": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "minimum_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "minimum_eta_lower_estimate": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "lateral_area_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "area_ratio_to_nominal": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "pouch_count": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "last_segment_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "total_length_mm": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "active_bounding_footprint_cm2": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "worst_D_m2_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": true,
+          "allow_infinite": false
+        },
+        "worst_P_m_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": true,
+          "allow_infinite": true
+        },
+        "worst_end_condition": {
+          "type": "string",
+          "allowed_values": [
+            "",
+            "absorbing",
+            "reflecting"
+          ]
+        },
+        "thinner_than_150um_IEQ_reference_diameter": {
+          "type": "string",
+          "allowed_values": [
+            "False",
+            "True"
+          ]
+        },
+        "at_thickest_grid_boundary": {
+          "type": "string",
+          "allowed_values": [
+            "False",
+            "True"
+          ]
+        }
+      }
+    },
+    "data/robustness_verification.csv": {
+      "headers": [
+        "thickness_mm",
+        "D_m2_s",
+        "P_m_s",
+        "end_condition",
+        "deadline_min",
+        "map_eta",
+        "modal256_512_eta",
+        "modal512_1024_eta",
+        "modal_refined_tail_eta",
+        "FV160_560_eta",
+        "FV320_1120_eta",
+        "FV_minus_refined_modal",
+        "FV_refinement_change"
+      ],
+      "keys": [
+        "thickness_mm",
+        "D_m2_s",
+        "P_m_s",
+        "end_condition",
+        "deadline_min"
+      ],
+      "row_count": 210,
+      "fields": {
+        "thickness_mm": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "D_m2_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "P_m_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": true
+        },
+        "end_condition": {
+          "type": "string",
+          "allowed_values": [
+            "absorbing",
+            "reflecting"
+          ]
+        },
+        "deadline_min": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "map_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "modal256_512_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "modal512_1024_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "modal_refined_tail_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "FV160_560_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "FV320_1120_eta": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "FV_minus_refined_modal": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "FV_refinement_change": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "data/sensitivity_verification.csv": {
+      "headers": [
+        "scenario",
+        "coarse_grid",
+        "fine_grid",
+        "eta_difference"
+      ],
+      "keys": [
+        "scenario"
+      ],
+      "row_count": 7,
+      "fields": {
+        "scenario": {
+          "type": "string",
+          "allowed_values": [
+            "Robin_P_1e-06",
+            "Robin_P_1e-07",
+            "Robin_P_1e-08",
+            "outer_0.10mm",
+            "outer_half_thickness",
+            "outer_quarter_thickness",
+            "uniform"
+          ]
+        },
+        "coarse_grid": {
+          "type": "string",
+          "allowed_values": [
+            "160x560"
+          ]
+        },
+        "fine_grid": {
+          "type": "string",
+          "allowed_values": [
+            "320x1120"
+          ]
+        },
+        "eta_difference": {
+          "type": "number",
+          "profile": "fraction",
+          "allow_blank": false,
+          "allow_infinite": false
+        }
+      }
+    },
+    "geometry_ledger.csv": {
+      "headers": [
+        "parameter_id",
+        "quantity",
+        "value",
+        "units",
+        "status",
+        "source_id",
+        "source_location",
+        "derivation",
+        "limitation"
+      ],
+      "keys": [
+        "parameter_id"
+      ],
+      "row_count": 24,
+      "fields": {
+        "parameter_id": {
+          "type": "string",
+          "allowed_values": [
+            "G01",
+            "G02",
+            "G03",
+            "G04",
+            "G05",
+            "G06",
+            "G07",
+            "G08",
+            "G09",
+            "G10",
+            "G11",
+            "G12",
+            "G13",
+            "G14",
+            "G15",
+            "G16",
+            "G17",
+            "G18",
+            "G19",
+            "G20",
+            "G21",
+            "G22",
+            "G23",
+            "G24"
+          ]
+        },
+        "quantity": {
+          "type": "string",
+          "allowed_values": [
+            "active_length_per_pouch",
+            "annular_cross_section",
+            "baseline_active_rectangular_footprint",
+            "baseline_active_row_width",
+            "both_annular_end_area",
+            "cell_layer_thickness",
+            "effective_uniform_density_primary",
+            "fraction_nominal_volume_for_reported_dose",
+            "full_nominal_payload_at_source_density",
+            "illustrated_total_bounding_footprint",
+            "illustrated_total_length_with_overhead",
+            "inner_radius",
+            "intended_human_payload",
+            "nominal_total_cell_compartment_volume",
+            "nominal_volume_per_pouch",
+            "outer_lateral_exchange_area",
+            "outer_radius",
+            "pouch_count",
+            "pouch_outer_diameter",
+            "pouch_separation",
+            "rounded_volume_payload_at_source_density",
+            "source_loading_density",
+            "source_rounded_volume_per_pouch",
+            "volume_required_at_source_density"
+          ]
+        },
+        "value": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "units": {
+          "type": "string",
+          "allowed_values": [
+            "IEQ",
+            "IEQ/mL",
+            "cm2",
+            "fraction",
+            "mL",
+            "mm",
+            "mm2",
+            "pouches"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "allowed_values": [
+            "derived",
+            "derived_discrepancy",
+            "derived_from_figure_labels",
+            "model_normalization",
+            "secondary_case",
+            "source_figure_label",
+            "source_reported",
+            "source_reported_and_idealized"
+          ]
+        },
+        "source_id": {
+          "type": "string",
+          "allowed_values": [
+            "S1-SUPP"
+          ]
+        },
+        "source_location": {
+          "type": "string",
+          "allowed_values": [
+            "Supplementary Figure 24; PDF page 21"
+          ]
+        },
+        "derivation": {
+          "type": "string",
+          "allowed_values": [
+            "",
+            "2*G01*G11/100",
+            "2*pi*G09*G04*G01/100",
+            "88*58.5/100",
+            "G01*G02+(G01-1)*G05",
+            "G02 / 2",
+            "G06/G07",
+            "G06/G13",
+            "G08*G01*G07",
+            "G09 - G03",
+            "G11*G04/1000",
+            "G12*G01",
+            "G13*G07",
+            "G17/G13",
+            "G21*G04/100",
+            "pi*(G09^2-G10^2)"
+          ]
+        },
+        "limitation": {
+          "type": "string",
+          "allowed_values": [
+            "",
+            "466200 IEQ differs from stated 420000 IEQ",
+            "Alternative occupied-volume interpretation; not assumed as fact",
+            "Annular idealization; source end shape rounded",
+            "Approximate source dimensions",
+            "Both ends are perfect sinks only in favorable model",
+            "Clear gap for single-row parallel layout",
+            "Excludes annular ends and overhead",
+            "Excludes generator and connectors; not total implant footprint",
+            "IEQ is volume normalized, not cluster count or potency",
+            "Illustrated baseline bound includes source overhead; does not prove buildability",
+            "Not reconciled with stated 420000 IEQ and full nominal volume",
+            "Preserves reported dose in full nominal model volume; not measured fill density",
+            "Proposed human configuration; not clinical measurement",
+            "Rounded volume",
+            "Same idealization",
+            "Separate case; not substituted for stated payload",
+            "Single-row bounding width",
+            "Source illustration; not imposed on redesigned layouts",
+            "Straight annulus omits detailed rounded ends and connector intrusion",
+            "Treat full indicated length as straight active annulus",
+            "Unresolved effective fill explanation"
+          ]
+        }
+      },
+      "field_overrides_by_key": {
+        "G01": {
+          "value": {
+            "type": "number",
+            "profile": "exact_number",
+            "allow_blank": false,
+            "allow_infinite": false
+          }
+        },
+        "G02": {
+          "value": {
+            "type": "number",
+            "profile": "exact_number",
+            "allow_blank": false,
+            "allow_infinite": false
+          }
+        },
+        "G03": {
+          "value": {
+            "type": "number",
+            "profile": "exact_number",
+            "allow_blank": false,
+            "allow_infinite": false
+          }
+        },
+        "G04": {
+          "value": {
+            "type": "number",
+            "profile": "exact_number",
+            "allow_blank": false,
+            "allow_infinite": false
+          }
+        },
+        "G05": {
+          "value": {
+            "type": "number",
+            "profile": "exact_number",
+            "allow_blank": false,
+            "allow_infinite": false
+          }
+        },
+        "G06": {
+          "value": {
+            "type": "number",
+            "profile": "exact_number",
+            "allow_blank": false,
+            "allow_infinite": false
+          }
+        },
+        "G07": {
+          "value": {
+            "type": "number",
+            "profile": "exact_number",
+            "allow_blank": false,
+            "allow_infinite": false
+          }
+        },
+        "G08": {
+          "value": {
+            "type": "number",
+            "profile": "exact_number",
+            "allow_blank": false,
+            "allow_infinite": false
+          }
+        },
+        "G23": {
+          "value": {
+            "type": "number",
+            "profile": "exact_number",
+            "allow_blank": false,
+            "allow_infinite": false
+          }
+        }
+      }
+    },
+    "evidence/oxygen_accounting.csv": {
+      "headers": [
+        "scenario",
+        "payload_IEQ",
+        "OCR_pmol_per_min_per_IEQ",
+        "oxygen_mol_per_s",
+        "oxygen_umol_per_min",
+        "ideal_current_mA",
+        "ideal_electrolyzer_power_at_1p4V_mW",
+        "ideal_electrolyzer_power_at_1p8V_mW",
+        "source_id",
+        "source_location",
+        "interpretation",
+        "assumed_oxygen_leakage_mol_per_s",
+        "assumed_faradaic_efficiency",
+        "limitation"
+      ],
+      "keys": [
+        "scenario"
+      ],
+      "row_count": 4,
+      "fields": {
+        "scenario": {
+          "type": "string",
+          "allowed_values": [
+            "human_table_high_central_value",
+            "human_table_low_central_value",
+            "source_design_scenario_nominal_payload",
+            "source_design_scenario_primary"
+          ]
+        },
+        "payload_IEQ": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "OCR_pmol_per_min_per_IEQ": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "oxygen_mol_per_s": {
+          "type": "number",
+          "profile": "small_rate",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "oxygen_umol_per_min": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "ideal_current_mA": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "ideal_electrolyzer_power_at_1p4V_mW": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "ideal_electrolyzer_power_at_1p8V_mW": {
+          "type": "number",
+          "profile": "resource",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "source_id": {
+          "type": "string",
+          "allowed_values": [
+            "S1-MAIN;S1-SUPP;S7",
+            "S1-SUPP"
+          ]
+        },
+        "source_location": {
+          "type": "string",
+          "allowed_values": [
+            "Main text Par9 Fig2 discussion; Supplementary Table1 p26 human row ref10; Papas2007 Table1 research FBS group",
+            "Supplementary Table1 PDF p26 human row ref12; converted central value1.144 pmol/min/IEQ; underlying paper not independently inspected",
+            "Supplementary Table1 PDF p26 human row ref8 day2; converted central value2.912 pmol/min/IEQ; underlying thesis not independently inspected"
+          ]
+        },
+        "interpretation": {
+          "type": "string",
+          "allowed_values": [
+            "BEAM main text Fig2 discussion assumed human OCR; not paired stimulated maximum",
+            "Same OCR assumption at secondary full nominal dose",
+            "Unpaired published condition; not a basal lower bound",
+            "Unpaired published condition; not a stimulated upper bound"
+          ]
+        },
+        "assumed_oxygen_leakage_mol_per_s": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "assumed_faradaic_efficiency": {
+          "type": "number",
+          "profile": "exact_number",
+          "allow_blank": false,
+          "allow_infinite": false
+        },
+        "limitation": {
+          "type": "string",
+          "allowed_values": [
+            "Stoichiometric floor only; actual leakage/efficiency/delivery/peak demand and auxiliary power unmeasured"
+          ]
+        }
+      }
+    }
+  },
+  "json": {
+    "evidence/numerical_primary_verified.json": {
+      "leaf_rules": {
+        "/schema_version": {
+          "types": [
+            "string"
+          ]
+        },
+        "/status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/eta30_continuum_truncated": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/eta30_finest_FV": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/estimated_numerical_uncertainty_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/estimated_interval_eta/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/interval_status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/modal_omitted_tail_bound_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/FV_refinement_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/independent_method_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/quadrature_checks/*/order": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/quadrature_checks/*/max_weight_error": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/quadrature_checks/*/sum_absolute_weight_error": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/field_audits/*/time_s": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/field_audits/*/steady": {
+          "types": [
+            "bool"
+          ]
+        },
+        "/field_audits/*/min_concentration_source_seconds": {
+          "types": [
+            "number"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/max_concentration_source_seconds": {
+          "types": [
+            "number"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/inventory_source_seconds": {
+          "types": [
+            "number"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/boundary_flux_over_source_rate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/field_audits/*/cumulative_boundary_flux_source_seconds": {
+          "types": [
+            "number",
+            "null"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/independent_face_integral_mass_error_source_seconds": {
+          "types": [
+            "number",
+            "null"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/inventory_spectral_discrepancy": {
+          "types": [
+            "number"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/flux_spectral_discrepancy": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/field_audits/*/algebraic_mass_identity_error_source_seconds": {
+          "types": [
+            "number"
+          ],
+          "profile": "source_seconds"
+        },
+        "/volume_ml": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/effective_density_IEQ_per_ml": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/nominal_60000_density_payload_IEQ": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/inventory_fraction_at_shutoff": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/fraction_recovered_120min_after_shutoff": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/model_specification_sha256": {
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "structure": "Exact recursive field sets and ordered list lengths/types against exact verified reference"
+    },
+    "evidence/numerical_roots.json": {
+      "leaf_rules": {
+        "/q_roots/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "spectral"
+        },
+        "/brackets/*/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "spectral"
+        },
+        "/max_root_residual": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/next_eigenvalue_per_m2": {
+          "types": [
+            "number"
+          ],
+          "profile": "spectral"
+        },
+        "/weight_sum": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/min_weight": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/analytic_norm_min": {
+          "types": [
+            "number"
+          ],
+          "profile": "small_dimensional"
+        }
+      },
+      "structure": "Exact recursive field sets and ordered list lengths/types against exact verified reference"
+    },
+    "evidence/numerical_verification.json": {
+      "leaf_rules": {
+        "/schema_version": {
+          "types": [
+            "string"
+          ]
+        },
+        "/status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/eta30_continuum_truncated": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/eta30_finest_FV": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/estimated_numerical_uncertainty_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/estimated_interval_eta/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/interval_status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/modal_omitted_tail_bound_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/FV_refinement_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/independent_method_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/volume_ml": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/effective_density_IEQ_per_ml": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/nominal_60000_density_payload_IEQ": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/side_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/critical_D_m2_per_s_for_eta30_0_80": {
+          "types": [
+            "number"
+          ],
+          "profile": "small_rate"
+        },
+        "/reflecting_ends_eta30": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/inventory_fraction_at_shutoff": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/fraction_recovered_120min_after_shutoff": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/source_rate_capacity_multiplier_at_30min": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/quadrature_checks/*/order": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/quadrature_checks/*/max_weight_error": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/quadrature_checks/*/sum_absolute_weight_error": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/field_audits/*/time_s": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/field_audits/*/steady": {
+          "types": [
+            "bool"
+          ]
+        },
+        "/field_audits/*/min_concentration_source_seconds": {
+          "types": [
+            "number"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/max_concentration_source_seconds": {
+          "types": [
+            "number"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/inventory_source_seconds": {
+          "types": [
+            "number"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/boundary_flux_over_source_rate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/field_audits/*/cumulative_boundary_flux_source_seconds": {
+          "types": [
+            "number",
+            "null"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/independent_face_integral_mass_error_source_seconds": {
+          "types": [
+            "number",
+            "null"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/inventory_spectral_discrepancy": {
+          "types": [
+            "number"
+          ],
+          "profile": "source_seconds"
+        },
+        "/field_audits/*/flux_spectral_discrepancy": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/field_audits/*/algebraic_mass_identity_error_source_seconds": {
+          "types": [
+            "number"
+          ],
+          "profile": "source_seconds"
+        },
+        "/root_bracketing": {
+          "types": [
+            "string"
+          ]
+        },
+        "/max_root_residual": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/minimum_radial_modal_weight": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/radial_modal_weight_sum": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/axial_modal_weight_sum": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/frontier_max_omitted_tail_eta_bound": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/frontier_max_refinement_eta_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/frontier_threshold_neighbors": {
+          "types": [
+            "string"
+          ]
+        },
+        "/frontier_global_grid_minimum_check": {
+          "types": [
+            "string"
+          ]
+        },
+        "/sensitivity_max_grid_eta_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/environment/python": {
+          "types": [
+            "string"
+          ]
+        },
+        "/environment/numpy": {
+          "types": [
+            "string"
+          ]
+        },
+        "/environment/scipy": {
+          "types": [
+            "string"
+          ]
+        },
+        "/environment/matplotlib": {
+          "types": [
+            "string"
+          ]
+        },
+        "/environment/platform": {
+          "types": [
+            "string"
+          ]
+        },
+        "/model_specification_sha256": {
+          "types": [
+            "string"
+          ]
+        },
+        "/checks": {
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "structure": "Exact recursive field sets and ordered list lengths/types against exact verified reference",
+      "validated_metadata_exceptions": {
+        "/environment": "runtime_environment"
+      }
+    },
+    "evidence/numerical_summary.txt": {
+      "leaf_rules": {
+        "/schema_version": {
+          "types": [
+            "string"
+          ]
+        },
+        "/status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/eta30_continuum_truncated": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/eta30_finest_FV": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/estimated_numerical_uncertainty_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/estimated_interval_eta/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/interval_status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/modal_omitted_tail_bound_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/FV_refinement_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/independent_method_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/volume_ml": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/effective_density_IEQ_per_ml": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/nominal_60000_density_payload_IEQ": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/side_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/critical_D_m2_per_s_for_eta30_0_80": {
+          "types": [
+            "number"
+          ],
+          "profile": "small_rate"
+        },
+        "/reflecting_ends_eta30": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/inventory_fraction_at_shutoff": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/fraction_recovered_120min_after_shutoff": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/source_rate_capacity_multiplier_at_30min": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/root_bracketing": {
+          "types": [
+            "string"
+          ]
+        },
+        "/max_root_residual": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/minimum_radial_modal_weight": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/radial_modal_weight_sum": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/axial_modal_weight_sum": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/frontier_max_omitted_tail_eta_bound": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/frontier_max_refinement_eta_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/frontier_threshold_neighbors": {
+          "types": [
+            "string"
+          ]
+        },
+        "/frontier_global_grid_minimum_check": {
+          "types": [
+            "string"
+          ]
+        },
+        "/sensitivity_max_grid_eta_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/environment/python": {
+          "types": [
+            "string"
+          ]
+        },
+        "/environment/numpy": {
+          "types": [
+            "string"
+          ]
+        },
+        "/environment/scipy": {
+          "types": [
+            "string"
+          ]
+        },
+        "/environment/matplotlib": {
+          "types": [
+            "string"
+          ]
+        },
+        "/environment/platform": {
+          "types": [
+            "string"
+          ]
+        },
+        "/model_specification_sha256": {
+          "types": [
+            "string"
+          ]
+        },
+        "/checks": {
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "structure": "Exact recursive field sets and ordered list lengths/types against exact verified reference",
+      "validated_metadata_exceptions": {
+        "/environment": "runtime_environment"
+      }
+    },
+    "evidence/robustness_verification.json": {
+      "leaf_rules": {
+        "/schema_version": {
+          "types": [
+            "string"
+          ]
+        },
+        "/specification_sha256": {
+          "types": [
+            "string"
+          ]
+        },
+        "/scope": {
+          "types": [
+            "string"
+          ]
+        },
+        "/physical_feasibility": {
+          "types": [
+            "string"
+          ]
+        },
+        "/map_rows": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/scenario_combinations_per_h": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/thickness_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/deadline_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/targets/*/scenario_set": {
+          "types": [
+            "string"
+          ]
+        },
+        "/targets/*/deadline_min": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/targets/*/target_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/targets/*/status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/targets/*/unresolved_competitors": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/targets/*/thickness_mm": {
+          "types": [
+            "number",
+            "string"
+          ],
+          "profile": "exact_number"
+        },
+        "/targets/*/minimum_eta": {
+          "types": [
+            "number",
+            "string"
+          ],
+          "profile": "fraction"
+        },
+        "/targets/*/minimum_eta_lower_estimate": {
+          "types": [
+            "number",
+            "string"
+          ],
+          "profile": "fraction"
+        },
+        "/targets/*/lateral_area_cm2": {
+          "types": [
+            "number",
+            "string"
+          ],
+          "profile": "resource"
+        },
+        "/targets/*/area_ratio_to_nominal": {
+          "types": [
+            "number",
+            "string"
+          ],
+          "profile": "resource"
+        },
+        "/targets/*/pouch_count": {
+          "types": [
+            "integer",
+            "string"
+          ],
+          "profile": "exact_number"
+        },
+        "/targets/*/last_segment_mm": {
+          "types": [
+            "number",
+            "string"
+          ],
+          "profile": "resource"
+        },
+        "/targets/*/total_length_mm": {
+          "types": [
+            "number",
+            "string"
+          ],
+          "profile": "resource"
+        },
+        "/targets/*/active_bounding_footprint_cm2": {
+          "types": [
+            "number",
+            "string"
+          ],
+          "profile": "resource"
+        },
+        "/targets/*/worst_D_m2_s": {
+          "types": [
+            "number",
+            "string"
+          ],
+          "profile": "exact_number"
+        },
+        "/targets/*/worst_P_m_s": {
+          "types": [
+            "string",
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/targets/*/worst_end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/targets/*/thinner_than_150um_IEQ_reference_diameter": {
+          "types": [
+            "bool"
+          ]
+        },
+        "/targets/*/at_thickest_grid_boundary": {
+          "types": [
+            "bool"
+          ]
+        },
+        "/reviewer_checks/*/check": {
+          "types": [
+            "string"
+          ]
+        },
+        "/reviewer_checks/*/thickness_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/reviewer_checks/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/reviewer_checks/*/P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/reviewer_checks/*/ends": {
+          "types": [
+            "string"
+          ]
+        },
+        "/reviewer_checks/*/eta30": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/reviewer_checks/*/tail_bound_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/critical_D_h060_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "small_rate"
+        },
+        "/waveform/geometry": {
+          "types": [
+            "string"
+          ]
+        },
+        "/waveform/diffusion_timescale_h2_over_D_minutes": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/waveform/dimensionless_D_T_over_h2_at30min": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/waveform/instant_uniform_initial_inventory_fraction_delivered_by30min": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/waveform/constant_uniform_production_fraction_delivered_by30min": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/waveform/interpretation": {
+          "types": [
+            "string"
+          ]
+        },
+        "/max_modal_tail_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/max_root_residual": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/min_radial_weight_sum": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/near_threshold_scenarios_refined": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/FV_validation_case_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/max_FV_modal_difference_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/max_FV_refinement_change_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/max_map_refined_modal_difference_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/quadrature_checks/*/h_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/quadrature_checks/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/quadrature_checks/*/P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/quadrature_checks/*/order": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/quadrature_checks/*/max_weight_error": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/quadrature_checks/*/sum_absolute_weight_error": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/quadrature_checks/*/root_residual_max": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/floating_guard_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/threshold_scope": {
+          "types": [
+            "string"
+          ]
+        },
+        "/checks": {
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "structure": "Exact recursive field sets and ordered list lengths/types against exact verified reference"
+    },
+    "evidence/robustness_waveform.json": {
+      "leaf_rules": {
+        "/geometry": {
+          "types": [
+            "string"
+          ]
+        },
+        "/diffusion_timescale_h2_over_D_minutes": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/dimensionless_D_T_over_h2_at30min": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/instant_uniform_initial_inventory_fraction_delivered_by30min": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/constant_uniform_production_fraction_delivered_by30min": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/interpretation": {
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "structure": "Exact recursive field sets and ordered list lengths/types against exact verified reference"
+    },
+    "evidence/design_constraints_verification.json": {
+      "leaf_rules": {
+        "/schema_version": {
+          "types": [
+            "string"
+          ]
+        },
+        "/specification_sha256": {
+          "types": [
+            "string"
+          ]
+        },
+        "/inputs_sha256/data/robustness_map.csv": {
+          "types": [
+            "string"
+          ]
+        },
+        "/inputs_sha256/data/robustness_frontier.csv": {
+          "types": [
+            "string"
+          ]
+        },
+        "/inputs_sha256/data/robustness_targets.csv": {
+          "types": [
+            "string"
+          ]
+        },
+        "/inputs_sha256/robustness_specification.json": {
+          "types": [
+            "string"
+          ]
+        },
+        "/code_sha256": {
+          "types": [
+            "string"
+          ]
+        },
+        "/scope": {
+          "types": [
+            "string"
+          ]
+        },
+        "/uncertainty_status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/maximum_rows": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/target_rows": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_rows": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/target_status_counts/minimum within constrained grid and discrete scenario set": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/target_status_counts/not attained within constrained grid": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/target_status_counts/unresolved numerical overlap": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/maximum_existing_frontier_difference": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/unconstrained_target_reconstructions": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/maximum_deliveries_nonincreasing_as_h_min_rises": {
+          "types": [
+            "bool"
+          ]
+        },
+        "/all_selection_competitors_checked": {
+          "types": [
+            "bool"
+          ]
+        },
+        "/negative_mutation_guard_checks_passed/*": {
+          "types": [
+            "string"
+          ]
+        },
+        "/maximum_point_optimizer_interval_overlap_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/reviewer_constraint_checks/*/h_min_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/reviewer_constraint_checks/*/maximum_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/reviewer_constraint_checks/*/maximum_lower": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/reviewer_constraint_checks/*/maximum_upper": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/reviewer_constraint_checks/*/expected_rounded_percent": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/reviewer_constraint_checks/*/target_0p8_status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_comparison/*/mechanism_case": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_comparison/*/scenario_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/h_min_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/deadline_min": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/target_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_comparison/*/eligible_design_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/lower_area_competitors_excluded": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/unresolved_competitor_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/maximum_worst_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/thickness_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/minimum_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/minimum_eta_lower_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/minimum_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/lateral_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/area_ratio_to_nominal": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/pouch_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/last_segment_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/total_length_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/active_bounding_footprint_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/worst_D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/worst_P_m_s": {
+          "types": [
+            "string",
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/worst_end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_comparison/*/area_increase_percent_to_nominal": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/selected_at_h_min": {
+          "types": [
+            "bool"
+          ]
+        },
+        "/mechanism_comparison/*/selected_at_thickest_grid_boundary": {
+          "types": [
+            "bool"
+          ]
+        },
+        "/mechanism_comparison/*/thinner_than_150um_IEQ_reference_diameter": {
+          "types": [
+            "bool"
+          ]
+        },
+        "/mechanism_comparison/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/P_m_s": {
+          "types": [
+            "string",
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_comparison/*/nominal_h_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/eta_at_nominal_h": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/eta_lower_at_nominal_h": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/eta_upper_at_nominal_h": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/selected_Fo": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/selected_Bi": {
+          "types": [
+            "string",
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/nominal_Fo": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/nominal_Bi": {
+          "types": [
+            "string",
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/selected_h_over_outer_radius": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/selected_longest_segment_over_h": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/selected_remainder_over_h": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/nominal_h_over_outer_radius": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/nominal_segment_over_h": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/next_lower_area_h_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_comparison/*/next_lower_area_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/next_lower_area_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/max_upper_among_all_lower_area_competitors": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/minimum_target_margin_lower_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_comparison/*/comparison_status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_comparison/*/additional_area_cm2_vs_favorable_reoptimization": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_comparison/*/additional_area_percent_vs_favorable_reoptimization": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        }
+      },
+      "structure": "Exact recursive field sets and ordered list lengths/types against exact verified reference",
+      "validated_metadata_exceptions": {
+        "/code_sha256": "actual_generated_code_sha256"
+      }
+    },
+    "evidence/design_constraints_selection_trace.json": {
+      "leaf_rules": {
+        "/specification_sha256": {
+          "types": [
+            "string"
+          ]
+        },
+        "/input_map_sha256": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/nominal_favorable/*/thickness_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/minimum_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/minimum_eta_lower_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/minimum_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/worst_D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/worst_P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/nominal_favorable/*/worst_end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/nominal_favorable/*/point_limiting_scenarios/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/point_limiting_scenarios/*/P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/nominal_favorable/*/point_limiting_scenarios/*/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/nominal_favorable/*/upper_exclusion_scenario/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/upper_exclusion_scenario/P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/nominal_favorable/*/upper_exclusion_scenario/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/nominal_favorable/*/lateral_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/area_ratio_to_nominal": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/pouch_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/last_segment_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/total_length_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/nominal_favorable/*/active_bounding_footprint_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/thickness_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/minimum_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/minimum_eta_lower_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/minimum_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/worst_D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/worst_P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/worst_end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/point_limiting_scenarios/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/point_limiting_scenarios/*/P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/point_limiting_scenarios/*/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/upper_exclusion_scenario/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/upper_exclusion_scenario/P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/upper_exclusion_scenario/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/lateral_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/area_ratio_to_nominal": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/pouch_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/last_segment_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/total_length_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/near_nominal_discrete/*/active_bounding_footprint_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/broad_discrete/*/thickness_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/broad_discrete/*/minimum_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/design_estimates_by_set/broad_discrete/*/minimum_eta_lower_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/design_estimates_by_set/broad_discrete/*/minimum_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/design_estimates_by_set/broad_discrete/*/worst_D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/broad_discrete/*/worst_P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/broad_discrete/*/worst_end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/broad_discrete/*/point_limiting_scenarios/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/broad_discrete/*/point_limiting_scenarios/*/P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/broad_discrete/*/point_limiting_scenarios/*/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/broad_discrete/*/upper_exclusion_scenario/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/broad_discrete/*/upper_exclusion_scenario/P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/broad_discrete/*/upper_exclusion_scenario/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/design_estimates_by_set/broad_discrete/*/lateral_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/broad_discrete/*/area_ratio_to_nominal": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/broad_discrete/*/pouch_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/design_estimates_by_set/broad_discrete/*/last_segment_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/broad_discrete/*/total_length_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/design_estimates_by_set/broad_discrete/*/active_bounding_footprint_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/constraint_selection_traces/*/status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/constraint_selection_traces/*/eligible_h_mm/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/constraint_selection_traces/*/qualified_h_mm/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/constraint_selection_traces/*/candidate_h_mm": {
+          "types": [
+            "number",
+            "null"
+          ],
+          "profile": "exact_number"
+        },
+        "/constraint_selection_traces/*/lower_area_excluded_h_mm/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/constraint_selection_traces/*/upper_below_target_h_mm/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/constraint_selection_traces/*/equal_area_qualified_h_mm/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/constraint_selection_traces/*/scenario_set": {
+          "types": [
+            "string"
+          ]
+        },
+        "/constraint_selection_traces/*/h_min_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/constraint_selection_traces/*/target_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/favorable/*/thickness_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/favorable/*/minimum_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/favorable/*/minimum_eta_lower_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/favorable/*/minimum_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/favorable/*/worst_D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/favorable/*/worst_P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/favorable/*/worst_end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/favorable/*/point_limiting_scenarios/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/favorable/*/point_limiting_scenarios/*/P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/favorable/*/point_limiting_scenarios/*/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/favorable/*/upper_exclusion_scenario/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/favorable/*/upper_exclusion_scenario/P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/favorable/*/upper_exclusion_scenario/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/favorable/*/lateral_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/favorable/*/area_ratio_to_nominal": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/favorable/*/pouch_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/favorable/*/last_segment_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/favorable/*/total_length_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/favorable/*/active_bounding_footprint_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/thickness_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/minimum_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/minimum_eta_lower_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/minimum_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/worst_D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/worst_P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/lower_D_only/*/worst_end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/lower_D_only/*/point_limiting_scenarios/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/point_limiting_scenarios/*/P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/lower_D_only/*/point_limiting_scenarios/*/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/lower_D_only/*/upper_exclusion_scenario/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/upper_exclusion_scenario/P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/lower_D_only/*/upper_exclusion_scenario/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/lower_D_only/*/lateral_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/area_ratio_to_nominal": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/pouch_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/last_segment_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/total_length_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/lower_D_only/*/active_bounding_footprint_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/thickness_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/minimum_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/minimum_eta_lower_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/minimum_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/worst_D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/worst_P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/worst_end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/finite_P_only/*/point_limiting_scenarios/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/point_limiting_scenarios/*/P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/point_limiting_scenarios/*/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/finite_P_only/*/upper_exclusion_scenario/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/upper_exclusion_scenario/P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/upper_exclusion_scenario/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/finite_P_only/*/lateral_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/area_ratio_to_nominal": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/pouch_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/last_segment_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/total_length_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/finite_P_only/*/active_bounding_footprint_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/thickness_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/minimum_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/minimum_eta_lower_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/minimum_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/worst_D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/worst_P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/worst_end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/point_limiting_scenarios/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/point_limiting_scenarios/*/P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/point_limiting_scenarios/*/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/upper_exclusion_scenario/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/upper_exclusion_scenario/P_m_s": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/upper_exclusion_scenario/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/lateral_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/area_ratio_to_nominal": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/pouch_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/last_segment_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/total_length_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/reflecting_ends_only/*/active_bounding_footprint_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/all_three/*/thickness_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/all_three/*/minimum_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/all_three/*/minimum_eta_lower_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/all_three/*/minimum_eta_upper_estimate": {
+          "types": [
+            "number"
+          ],
+          "profile": "fraction"
+        },
+        "/mechanism_design_estimates/all_three/*/worst_D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/all_three/*/worst_P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/all_three/*/worst_end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/all_three/*/point_limiting_scenarios/*/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/all_three/*/point_limiting_scenarios/*/P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/all_three/*/point_limiting_scenarios/*/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/all_three/*/upper_exclusion_scenario/D_m2_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/all_three/*/upper_exclusion_scenario/P_m_s": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/all_three/*/upper_exclusion_scenario/end_condition": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_design_estimates/all_three/*/lateral_area_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/all_three/*/area_ratio_to_nominal": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/all_three/*/pouch_count": {
+          "types": [
+            "integer"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_design_estimates/all_three/*/last_segment_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/all_three/*/total_length_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_design_estimates/all_three/*/active_bounding_footprint_cm2": {
+          "types": [
+            "number"
+          ],
+          "profile": "resource"
+        },
+        "/mechanism_selection_traces/*/status": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_selection_traces/*/eligible_h_mm/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_selection_traces/*/qualified_h_mm/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_selection_traces/*/candidate_h_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_selection_traces/*/lower_area_excluded_h_mm/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_selection_traces/*/upper_below_target_h_mm/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_selection_traces/*/equal_area_qualified_h_mm/*": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_selection_traces/*/scenario_set": {
+          "types": [
+            "string"
+          ]
+        },
+        "/mechanism_selection_traces/*/h_min_mm": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        },
+        "/mechanism_selection_traces/*/target_eta": {
+          "types": [
+            "number"
+          ],
+          "profile": "exact_number"
+        }
+      },
+      "structure": "Exact recursive field sets and ordered list lengths/types against exact verified reference",
+      "validated_metadata_exceptions": {
+        "/input_map_sha256": "actual_generated_map_sha256"
+      }
+    }
+  },
+  "csv_parse_rules": "Exact headers/order; no duplicate/extra/missing columns, blank records, duplicate keys or nonfinite numeric values. Exact Decimal keys. Blank and infinite sentinels only where explicitly declared. Validate both operands.",
+  "json_parse_rules": "Reject duplicate keys, NaN/Infinity, bool/int substitution, extra/missing fields and changed list structure. Named metadata exceptions must validate actual generated hashes/runtime.",
+  "decision_rules": [
+    "All robustness-map lower>=target and upper<target predicates must match at every recorded deadline and target0.5..0.9, even for sub-tolerance numeric changes.",
+    "Reconstruct all45 target selections,273 constrained maxima,546 constrained decisions and5mechanism selections from each own raw map; exact selected h, status, membership, maximizer and all lower-area exclusions.",
+    "Original frontier lower>=target/upper<target predicates and15unconstrained selections must match.",
+    "Require nonnegative tails/weights/uncertainties, lower<=point<=upper, valid fractions, and original verification/conservation limits."
+  ],
+  "isolation": {
+    "default_output": "_reproduced/<timestamp_random_suffix>",
+    "explicit_output": "Must not exist; must not overlap immutable release paths. Never modify reference artifacts.",
+    "copied_inputs": [
+      "code/*.py",
+      "model_specification.json",
+      "robustness_specification.json",
+      "design_constraints_specification.json",
+      "reproduction_comparison_specification.json"
+    ],
+    "required_output_directories": [
+      "data",
+      "evidence",
+      "figures",
+      "manuscript"
+    ],
+    "never_copy_as_regenerated": [
+      "data/*",
+      "evidence/*",
+      "figures/*",
+      "manuscript/content.json",
+      "manuscript/paper.*",
+      "manuscript/assets/*",
+      "REPORT.md",
+      "artifact_manifest.json"
+    ],
+    "reference_only": "Historical/source/provenance/review records stay in exact reference; not labeled regenerated."
+  },
+  "regenerated_text_exact": [
+    "manuscript/content.json",
+    "REPORT.md"
+  ],
+  "regenerated_text_policy": {
+    "encoding": "utf-8",
+    "decoding_errors": "strict",
+    "newline_normalization": "CRLF-to-LF-only",
+    "all_other_content": "exact"
+  },
+  "text_policy_revision": "Version 1.1 compares the regenerated_text_exact allowlist after strict UTF-8 decoding and replacement only of CRLF with LF. BOM, lone CR, all other whitespace and Unicode content remain significant. Supplied-release integrity still verifies exact original bytes first. Numerical profiles, decisions and the three original scientific specifications are unchanged.",
+  "required_figures": [
+    "figures/production_delivery.png",
+    "figures/production_delivery.pdf",
+    "figures/deadline_delivery.png",
+    "figures/deadline_delivery.pdf",
+    "figures/dose_area_frontier.png",
+    "figures/dose_area_frontier.pdf",
+    "figures/robustness_frontier.png",
+    "figures/robustness_frontier.pdf",
+    "figures/geometry_schematic.png",
+    "figures/geometry_schematic.pdf",
+    "figures/design_constraints.png",
+    "figures/design_constraints.pdf"
+  ],
+  "optional_manuscript_outputs": [
+    "manuscript/paper.docx",
+    "manuscript/paper.tex",
+    "manuscript/paper.pdf",
+    "manuscript/assets/equation_01.png",
+    "manuscript/assets/equation_02.png",
+    "manuscript/assets/equation_03.png",
+    "manuscript/assets/equation_04.png",
+    "manuscript/assets/equation_05.png",
+    "manuscript/assets/equation_06.png",
+    "manuscript/assets/equation_07.png",
+    "manuscript/assets/geometry_schematic.png",
+    "manuscript/assets/production_delivery.png",
+    "manuscript/assets/dose_area_frontier.png",
+    "manuscript/assets/design_constraints.png"
+  ],
+  "binary_policy": "Require fresh nonempty expected binaries; byte identity is not numerical equivalence. Content/report comparison under regenerated_text_policy precedes optional document build.",
+  "metadata_policy": "Archive original and generated hashes separately in reproduction_report.json and generated context. Validate actual code/map hashes and environment. No blanket hash exclusion."
+}

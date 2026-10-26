@@ -1,0 +1,154 @@
+{
+  "schema_version": "1.0",
+  "frozen_before_main_computation": true,
+  "date": "2026-10-26",
+  "claim_id": "H1",
+  "geometry": {
+    "inner_radius_m": 0.003,
+    "outer_radius_m": 0.00375,
+    "pouch_length_m": 0.07,
+    "pouch_count": 7,
+    "primary_payload_IEQ": 420000,
+    "secondary_nominal_density_IEQ_per_mL": 60000
+  },
+  "source": {
+    "spatial": "uniform per cell-compartment volume",
+    "temporal": "constant incremental production from t=0 through 1800 seconds; zero afterward",
+    "initial_incremental_inventory": 0,
+    "normalized_total_production_rate_per_second": 1,
+    "pulse_duration_s": 1800
+  },
+  "transport": {
+    "D_m2_per_s": 3e-10,
+    "D_cap_status": "conditional generous assumption, not measured BEAM insulin diffusivity or universal maximum",
+    "inner_wall": "reflecting",
+    "outer_wall": "perfect sink",
+    "end_faces": "both perfect sinks in primary",
+    "convection": false,
+    "degradation": false,
+    "binding": false,
+    "oxygen": "unlimited, conditional",
+    "secretion_latency_s": 0
+  },
+  "primary_observable": "eta30 = external delivered increment by 1800s / increment produced by 1800s",
+  "hypothesis": {
+    "predicate": "eta30 < 0.80",
+    "status_rule": "supported if numerical interval wholly below .80; refuted if wholly at or above .80; unresolved if overlapping .80"
+  },
+  "numerics": {
+    "primary": "conservative axisymmetric finite volume with exact-time matrix exponential via spectral decomposition",
+    "independent": "separable annular Bessel eigenfunctions and absorbing axial sine series",
+    "agreement_tolerance_eta": 0.005,
+    "estimated_uncertainty_max_eta": 0.002,
+    "fv_radial_grids": [
+      40,
+      80,
+      160,
+      320
+    ],
+    "fv_axial_grids": [
+      140,
+      280,
+      560,
+      1120
+    ],
+    "modal_radial_counts": [
+      32,
+      64,
+      128
+    ],
+    "modal_axial_odd_counts": [
+      64,
+      128,
+      256
+    ],
+    "root_bracket_step_pi": 0.125,
+    "root_xtol": 1e-12,
+    "quadrature": "Gauss-Legendre compared with analytic radial integrals and norms",
+    "uncertainty": "truncation bound plus observed FV refinement error; not a formally certified enclosure"
+  },
+  "outputs": {
+    "deadlines_minutes": [
+      5,
+      10,
+      15,
+      30,
+      60,
+      120
+    ],
+    "response_grid_seconds": 30,
+    "pulse_followup_end_seconds": 9000,
+    "continuous_source_curve": "eta for uniform production maintained until each deadline, separate from fixed-pulse cumulative recovery"
+  },
+  "sensitivities": {
+    "D_values_m2_s": [
+      5e-11,
+      1e-10,
+      1.5e-10,
+      2e-10,
+      2.4534e-10,
+      2.5e-10,
+      3e-10
+    ],
+    "critical_D_target_eta": 0.8,
+    "end_cases": [
+      "absorbing",
+      "reflecting"
+    ],
+    "outer_Robin_permeabilities_m_s": [
+      1e-08,
+      1e-07,
+      1e-06
+    ],
+    "Robin_status": "hypothetical sensitivity parameters; not measured membrane properties",
+    "placement": [
+      "uniform",
+      "outer_half_thickness",
+      "outer_quarter_thickness",
+      "outer_0.10mm"
+    ],
+    "placement_density_rule": "preserve same dose by increasing local density; report multiplier and ideal IEQ volume fraction; do not assert realizability"
+  },
+  "redesign": {
+    "outer_radius_m": 0.00375,
+    "thickness_mm_min": 0.1,
+    "thickness_mm_max": 1.0,
+    "thickness_mm_step": 0.01,
+    "preserve": [
+      "420000 IEQ",
+      "effective density reconciled to seven nominal annuli"
+    ],
+    "max_segment_length_m": 0.07,
+    "segmentation": "minimum number of <=70mm pouches; full segments plus shorter final segment; no arbitrary subdivisions",
+    "separation_m": 0.001,
+    "side_area": "2*pi*R*total_length",
+    "footprint": "parallel-pouch bounding rectangle with width n*2R+(n-1)*separation and length longest segment; excludes generator/connectors",
+    "eta_targets": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "deadlines_minutes": [
+      15,
+      30,
+      60
+    ],
+    "target_selection": "minimum side-area grid design meeting target, equivalently largest feasible h if monotonic; explicitly grid-limited"
+  },
+  "capacity": {
+    "formula": "mean intrinsic secretion per IEQ >= B/(N*T*eta(T))",
+    "B": "symbolic incremental insulin demand, not patient recommendation"
+  },
+  "nonclaims": [
+    "human efficacy",
+    "clinical insufficiency",
+    "hypoglycemia",
+    "insulin independence",
+    "immune protection",
+    "functional cure",
+    "biological cure",
+    "universal transport bound"
+  ]
+}

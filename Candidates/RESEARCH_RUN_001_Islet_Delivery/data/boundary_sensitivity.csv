@@ -1,0 +1,6 @@
+scenario,permeability_m_per_s,parameter_status,eta30
+perfect_outer_and_end_sinks,infinite,favorable idealization,0.7152697980076386
+perfect_outer_sink_reflecting_ends,infinite,hypothetical end obstruction,0.711893620192878
+Robin_outer_absorbing_ends,1e-08,"assumed sensitivity, not measured BEAM membrane permeability",0.028645369694721867
+Robin_outer_absorbing_ends,1e-07,"assumed sensitivity, not measured BEAM membrane permeability",0.1281675358426867
+Robin_outer_absorbing_ends,1e-06,"assumed sensitivity, not measured BEAM membrane permeability",0.49133635432005895

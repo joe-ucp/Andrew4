@@ -1,0 +1,5 @@
+source,occupied_shell_width_mm,eta30,density_multiplier_for_same_dose,local_density_IEQ_per_ml,ideal_IEQ_reference_volume_fraction,payload_IEQ,physical_status
+uniform,0.7499999999999998,0.7152579682163074,1,53893.73734328731,0.0952380952380952,420000.0,hypothetical continuous source; packing and oxygen feasibility not established
+outer_half_thickness,0.3749999999999999,0.8205027664660496,1.8947368421052626,102114.44970307066,0.18045112781954875,420000.0,hypothetical continuous source; packing and oxygen feasibility not established
+outer_quarter_thickness,0.18749999999999994,0.9006692624706076,3.6923076923076854,198992.26095982967,0.35164835164835084,420000.0,hypothetical continuous source; packing and oxygen feasibility not established
+outer_0.10mm,0.1,0.9445904997710676,6.8412162162162184,368698.7098653947,0.6515444015444015,420000.0,hypothetical continuous source; packing and oxygen feasibility not established

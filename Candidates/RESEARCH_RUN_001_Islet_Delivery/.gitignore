@@ -1,0 +1,27 @@
+# Private framework, governance, source caches and historical records.
+_UCP/
+_ucp/
+**/_[Uu][Cc][Pp]/
+
+# Local reproduction runs and build intermediates.
+_reproduced/
+_work/
+__pycache__/
+**/__pycache__/
+.venv/
+*.py[cod]
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+~$*
+.DS_Store
+Thumbs.db
+
+# Archives are private working material; the repository is the release.
+*.zip
+*.tar
+*.tar.gz

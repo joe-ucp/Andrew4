@@ -1,0 +1,53 @@
+# Revision 02: closest-literature comparison
+
+Search/inspection date: 26 October 2026, America/New_York. This bounded revision supplements the historical revision-1 search record. It is not a systematic review or priority certificate.
+
+## Permitted contribution
+
+The added study output is a reproducible **device-specific, parameter-qualified fixed-dose design map**, built from a general linear transfer response for a stated spatial source. The uniform 30-minute case and nominal 0.60 mm passing point are examples within that map. Diffusion delay, linear response mathematics, thinner-device benefits, source/output distinctions, numerical cross-checking, oxygen constraints and geometry/payload tradeoffs are established. Any robustness statement must name the tested parameter set and source class. No novel transport principle, universal ceiling or empirically validated design is claimed.
+
+## Compact comparison
+
+| Study | Device and source/input | Endpoint | Validation/evidence in that work | Additional output of this candidate |
+|---|---|---|---|---|
+| [Pham 2025](https://doi.org/10.1038/s41467-025-62271-2) | Oxygenated macroencapsulation; rodent implementations and proposed seven-pouch human geometry. Human GSIS uses hour-long external collections. | Oxygenation, viability, secretion and rodent function. | Experimental device work; proposed human geometry is not a measured human transport curve. | Transfer response and fixed-dose parameter map for that proposal; no contradiction of rodent findings. |
+| [Buchwald 2015](https://doi.org/10.1186/s12938-015-0021-9) | Encapsulated/unencapsulated islets under glucose perifusion; coupled secretion, nutrient transport and flow. | Time-resolved external insulin profiles and encapsulation effects. | Comparison with experimental perifusion profiles. | Later BEAM geometry and explicit fixed-dose area/segmentation map; dynamic secretion/transport modeling is established. |
+| [Ernst 2022](https://doi.org/10.1038/s41467-022-33760-5) | SHARP geometry, islet size/location and oxygen-dependent function. | Functional dose, oxygen distribution and design requirements. | Experiment-informed modeling and islet/function comparison, not a BEAM insulin-deadline experiment. | Distinct timed boundary-transfer endpoint; geometry optimization and payload accounting are established. |
+| [Thomson 2025](https://doi.org/10.2337/db24-0818) | Membrane macroencapsulation with intermittent pressure; cell-derived and insulin-reservoir delivery. | Transport dynamics and physiological delivery effects. | Analytical transport, in vitro tests and mouse experiments. | Passive finite-annulus map at fixed dose; pressure/flow is an established escape. |
+| [Trask 2024](https://doi.org/10.1039/D4BM00107A) | TPU reservoir, fibrosis, continuous/pulsatile flow; initially loaded insulin. | Release fraction and AUC at 15/60 minutes; thickness/fibrosis effects. | Measured tracer membrane inputs, historical capsule morphology and analytical checks; direct experimental model validation was not performed. | BEAM annulus, specified production waveforms and dose-preserving finite segmentation. |
+| [Papas 2019](https://doi.org/10.1016/j.addr.2019.05.002) | Review of oxygenation approaches for encapsulated islets/beta cells. | Survival/function constraints and oxygen-delivery strategies. | Secondary synthesis, not a new BEAM transport or OCR experiment. | Oxygen remains a separate obligation; no numeric diffusivity or stimulated OCR bound is imported. |
+
+## Trask: revised access boundary and interpretation
+
+The [public accepted-manuscript text](https://www.researchgate.net/publication/380017532_Exploring_therapy_transport_from_implantable_medical_devices_using_experimentally_informed_computational_methods) was inspected across introduction, methods, results and discussion/conclusion. Publisher-indexed sections corroborated the comparison. This removes revision 1's abstract-only limit for the substantive main-text comparison. It is not an all-page visual or supplement audit, or a downloaded publisher-PDF hash verification.
+
+Key locators: sections 2.1–2.3, 3.2–3.5 and 4; accepted-manuscript pages 4–17. Section 4 recognizes that thinning at fixed concentration and length reduces payload volume. Its initial concentration jump is not a physiological secretion waveform; analytical checks use simplifying mixing conditions. The remaining added output here is a particular geometry and conditional map. No equivalent seven-annulus fixed-dose map was identified in the inspected text; that is not proof of priority.
+
+RSC HTML/PDF and Galway PDF/public-bitstream requests returned HTTP 403. One web PDF response identified 15 pages, but later line/page retrieval failed; that response alone is not counted as inspection. The accepted-manuscript transcription has imperfect equation/unit rendering, so no numerical transport coefficient is imported. No account access, author request or reviewer contact occurred.
+
+## Papas 2019: exact scope
+
+The primary article's [publisher preview](https://www.sciencedirect.com/science/article/abs/pii/S0169409X19300523), [PubMed record](https://pubmed.ncbi.nlm.nih.gov/31077781/) and Europe PMC bibliographic API verify its identity. The abstract and publisher section previews were inspected. Full text was not obtained: direct publisher access returned 403 and ResearchGate offered a request-only record. Its context supports the coupling of oxygen, packing, viability and function. It supplies no verified numeric premise for this candidate. Its 2019 clinical context is not a claim about current clinical outcomes.
+
+## Exact references for manuscript integration
+
+Bibliographic identities were rechecked against Europe PMC records for all eight DOIs on 26 October 2026; Trask title/byline also against publisher/accepted-manuscript text. Standard first-author et-al forms below avoid misrepresenting author-list parsing as a journal byline.
+
+1. Pham TT, Tran PL, Tempelman LA, et al. **A continuously oxygenated macroencapsulation system enables high-density packing and delivery of insulin-secreting cells.** *Nature Communications* **16**(1), 7199 (2025). [doi:10.1038/s41467-025-62271-2](https://doi.org/10.1038/s41467-025-62271-2). PMID 40789835; PMCID PMC12339981.
+2. Buchwald P, Cechin SR, Weaver JD, Stabler CL. **Experimental evaluation and computational modeling of the effects of encapsulation on the time-profile of glucose-stimulated insulin release of pancreatic islets.** *BioMedical Engineering OnLine* **14**, 28 (2015). [doi:10.1186/s12938-015-0021-9](https://doi.org/10.1186/s12938-015-0021-9). PMID 25889474; PMCID PMC4403786.
+3. Ernst AU, Wang LH, Worland SC, et al. **A predictive computational platform for optimizing the design of bioartificial pancreas devices.** *Nature Communications* **13**(1), 6031 (2022). [doi:10.1038/s41467-022-33760-5](https://doi.org/10.1038/s41467-022-33760-5). PMID 36229614; PMCID PMC9561707.
+4. Thomson EA, Lee S, Xu H, et al. **Intermittent Low-Magnitude Pressure Applied Across Macroencapsulation Devices Enables Physiological Insulin Delivery Dynamics.** *Diabetes* **74**(6), 873–884 (2025). [doi:10.2337/db24-0818](https://doi.org/10.2337/db24-0818). PMID 40029687; PMCID PMC12097455. Supplement: doi:10.2337/figshare.28500536.
+5. Trask L, Ward NA, Tarpey R, et al. **Exploring therapy transport from implantable medical devices using experimentally informed computational methods.** *Biomaterials Science* **12**(11), 2899–2913 (2024). [doi:10.1039/D4BM00107A](https://doi.org/10.1039/D4BM00107A). PMID 38683198. The last title word is **methods**, not **models**; first published online 22 April 2024.
+6. Papas KK, Colton CK, Nelson RA, et al. **Human islet oxygen consumption rate and DNA measurements predict diabetes reversal in nude mice.** *American Journal of Transplantation* **7**(3), 707–713 (2007). [doi:10.1111/j.1600-6143.2006.01655.x](https://doi.org/10.1111/j.1600-6143.2006.01655.x). PMID 17229069; PMCID PMC2857994.
+7. Wang W, Upshaw L, Strong DM, Robertson RP, Reems J. **Increased oxygen consumption rates in response to high glucose detected by a novel oxygen biosensor system in non-human primate and human islets.** *Journal of Endocrinology* **185**(3), 445–455 (2005). [doi:10.1677/joe.1.06092](https://doi.org/10.1677/joe.1.06092). PMID 15930171.
+8. Papas KK, De Leon H, Suszynski TM, Johnson RC. **Oxygenation strategies for encapsulated islet and beta cell transplants.** *Advanced Drug Delivery Reviews* **139**, 139–156 (2019). [doi:10.1016/j.addr.2019.05.002](https://doi.org/10.1016/j.addr.2019.05.002). PMID 31077781. Review article; separate from Papas 2007 original OCR study.
+
+## Original-source and retrieval audit
+
+Original BEAM XML, Supplementary Figure 24/Table 1 and source workbooks remain the numerical source objects recorded in `sources.tsv` and `source_qualification.md`. The original Thomson supplement was reread, especially page 2's volume/area/membrane relation and pages 4–6's geometry and measurement descriptions. No parameter from another material/device becomes a measured BEAM parameter by citation.
+
+Protected local metadata cache: `rev02_bibliography_metadata.json` contains the eight Europe PMC core responses with exact request URLs and retrieval date. Individual cache hashes: `trask_europepmc_rev02.json` = `73a538dd1b5bae69cffc866bfd692bc50583c0770a177c8eaeb49e88541671d5`; `papas2019_europepmc_rev02.json` = `5f7b9fe528f9e37ac17301e8352f84fbb0a973acb8386ac759cd2c7bdd47fc5a`; `papas2019_core_rev02.json` = `e3be7b94ed3c875c0651e8ea12703ea67f7ee304f42b2476fa317689b3205120`. These are metadata/abstract records, not full articles. Failed downloads have no fabricated source hash. Web-rendered accepted text has URL/section/page locators but no local byte snapshot. No publisher file is required in the scientific export.
+
+Representative exact queries: `"10.1039/D4BM00107A" full text`; `"Exploring therapy transport from implantable medical devices" pdf`; `"Trask" "D4BM00107A" Galway`; `"D4BM00107A" "Methods" "coefficient"`; `"D4BM00107A" "supplementary"`; `"d4bm00107a" "3. Results"`; `"d4bm00107a" "4." "Discussion"`; `"d4bm00107a" "conclusions"`; `"Oxygenation strategies for encapsulated islet and beta cell transplants" Papas`; the same title with `researchgate` and with `pdf Arizona`.
+
+Only the original paper or accepted manuscript supplies technical comparisons. Unrelated clinical oxygenation search results were excluded. No completeness, current clinical efficacy, patentability or first-in-literature claim follows. A specialist may identify equivalent work or different physical parameters; either can reopen the relevant contribution.

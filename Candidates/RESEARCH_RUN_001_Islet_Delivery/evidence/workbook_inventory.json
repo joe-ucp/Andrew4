@@ -1,0 +1,143 @@
+[
+  {
+    "filename": "Data Source_Main text.xlsx",
+    "sha256": "109a6c78ac6ec45252fce1dd13454ed4e6ace61a55681c84bc8b98bd025b48fd",
+    "inspection": "read-only; dimensions and key headers/cells; no calculations replaced",
+    "sheet_count": 20,
+    "sheets": [
+      {
+        "name": "Figure 2B_Day 121",
+        "max_row": 2881,
+        "max_column": 4
+      },
+      {
+        "name": "Figure 2B_Day 186",
+        "max_row": 2950,
+        "max_column": 4
+      },
+      {
+        "name": "Figure 2B_Day 879",
+        "max_row": 3278,
+        "max_column": 4
+      },
+      {
+        "name": "Figure 2C",
+        "max_row": 5,
+        "max_column": 2
+      },
+      {
+        "name": "Figure 2D",
+        "max_row": 9,
+        "max_column": 1
+      },
+      {
+        "name": "Figure 2E",
+        "max_row": 4,
+        "max_column": 2
+      },
+      {
+        "name": "Figure 3D",
+        "max_row": 288,
+        "max_column": 1
+      },
+      {
+        "name": "Figure 3E",
+        "max_row": 12474,
+        "max_column": 8
+      },
+      {
+        "name": "Figure 4F",
+        "max_row": 6,
+        "max_column": 1
+      },
+      {
+        "name": "Figure 5B",
+        "max_row": 302,
+        "max_column": 3
+      },
+      {
+        "name": "Figure 6B",
+        "max_row": 866,
+        "max_column": 3
+      },
+      {
+        "name": "Figure 6F",
+        "max_row": 4,
+        "max_column": 5
+      },
+      {
+        "name": "Figure 7C",
+        "max_row": 26640,
+        "max_column": 3
+      },
+      {
+        "name": "Figure 7D",
+        "max_row": 20,
+        "max_column": 5
+      },
+      {
+        "name": "Figure 7E",
+        "max_row": 63,
+        "max_column": 5
+      },
+      {
+        "name": "Figure 7F",
+        "max_row": 90,
+        "max_column": 7
+      },
+      {
+        "name": "Figure 7G",
+        "max_row": 93,
+        "max_column": 20
+      },
+      {
+        "name": "Figure 7H",
+        "max_row": 8,
+        "max_column": 19
+      },
+      {
+        "name": "Figure 7I",
+        "max_row": 6,
+        "max_column": 4
+      },
+      {
+        "name": "Figure 8E",
+        "max_row": 10,
+        "max_column": 13
+      }
+    ]
+  },
+  {
+    "filename": "Data Source_Supplementary Information.xlsx",
+    "sha256": "6b960966c1794ddfadcbbcbff1dbca2de76567d89ddf33dfd35c991cf5d9dc8b",
+    "inspection": "read-only; dimensions and key headers/cells; no calculations replaced",
+    "sheet_count": 5,
+    "sheets": [
+      {
+        "name": "Supplementary Figure 3",
+        "max_row": 12,
+        "max_column": 1
+      },
+      {
+        "name": "Supplementary Figure 7",
+        "max_row": 158,
+        "max_column": 11
+      },
+      {
+        "name": "Supplementary Figure 18",
+        "max_row": 82,
+        "max_column": 15
+      },
+      {
+        "name": "Supplementary Figure 19",
+        "max_row": 8,
+        "max_column": 19
+      },
+      {
+        "name": "Supplementary Figure 20",
+        "max_row": 3,
+        "max_column": 9
+      }
+    ]
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "revision": "3 focused design-constraint and mechanism extension",
+  "date": "2026-10-26",
+  "frozen_before_main_postprocessing": true,
+  "question": "Within the verified fixed-dose sampled family, which delivery targets remain attainable after a hypothetical minimum thickness is imposed, and how do separately reoptimized transport assumptions change resource requirements?",
+  "method_scope": "Deterministic postprocessing of verified existing results only. No new PDE sweep, parameter fit, continuous optimization, or inference of physical feasibility.",
+  "inputs_sha256": {
+    "data/robustness_map.csv": "863d198113210104dda1d2ed2c518230a2dc6c4a6a795e4488f54e317a9f771c",
+    "data/robustness_frontier.csv": "78c82d248cbba5d9df1ee15ae50cb0a6172df691236fa4f0b55520c0919c1bda",
+    "data/robustness_targets.csv": "bb4a393200b0672d4c95a3387148a735a23ecefc8a25bc34ab717bd3779cafcd",
+    "robustness_specification.json": "3a2013c3c6adfb42123b6858e9755c73b2422f125c4d18f772bcec0fba67eb7c"
+  },
+  "guards": "Fail closed before scientific calculation or output if this specification or any bound input differs. Validate complete unique scenario/h/deadline coverage, numerical bracket ordering, fixed geometry/dose fields, and reconstruction of the existing set frontier.",
+  "inherited_model": {
+    "payload_IEQ": 420000,
+    "outer_radius_m": 0.00375,
+    "nominal_thickness_mm": 0.75,
+    "density": "53893.73734328731 IEQ/mL, derived from the nominal seven straight annuli, held fixed",
+    "segmentation": "Minimum number of segments no longer than70mm, including actual shorter remainder and the inherited end effects",
+    "source": "Uniform volumetric production, zero incremental initial inventory, constant source maintained to30min",
+    "observable": "Cumulative boundary delivery divided by total production through30min, eta(30min); not post-shutoff fixed-pulse recovery",
+    "unchanged_assumptions": "No binding, degradation, convection, tissue transport, secretion feedback, or oxygen field"
+  },
+  "grid": {
+    "deadline_min": 30,
+    "h_mm": {"start": 0.1, "stop": 1.0, "step": 0.01},
+    "h_min_mm": {"start": 0.1, "stop": 1.0, "step": 0.01},
+    "targets_eta": [0.8, 0.9],
+    "eligibility": "h>=h_min on the existing discrete grid; integer hundredths of a millimetre used for comparisons",
+    "physical_status": "h_min is an illustrative, unassigned biological/manufacturing constraint. No empirical limit is selected. The150um IEQ volume-reference diameter is not a universal hard cutoff. Thickness alone does not establish realizability."
+  },
+  "scenario_sets": {
+    "nominal_favorable": {"D_m2_s": [3e-10], "P_m_s": ["infinite"], "ends": ["absorbing"]},
+    "near_nominal_discrete": {"D_m2_s": [2.85e-10, 3e-10], "P_m_s": [1e-5, "infinite"], "ends": ["absorbing", "reflecting"]},
+    "broad_discrete": {"D_m2_s": [1e-10, 2e-10, 2.85e-10, 3e-10], "P_m_s": [1e-6, 1e-5, "infinite"], "ends": ["absorbing", "reflecting"]}
+  },
+  "worst_scenario_aggregation": "For every h reconstruct point=min_s eta, lower=min_s eta_lower_estimate, upper=min_s eta_upper_estimate. Record limiting parameter combinations; ties are retained. Labels are arbitrary finite assumed scenario-set labels, with no probability or continuous uncertainty coverage.",
+  "maximum_attainable_delivery": "For every h_min enumerate all eligible h. Report max_h min_s eta and numerical estimates [max_h min_s lower,max_h min_s upper]. Record the point-estimate maximizing h and any competitor whose upper overlaps its lower; do not assume monotonicity or a unique maximizing h without checking.",
+  "target_selection": {
+    "pass": "An eligible design qualifies only if its minimum scenario lower estimate>=target.",
+    "minimum_area": "Choose the qualifying design with smallest lateral area only if every eligible design of strictly lower area has minimum scenario upper estimate<target. Record all such exclusions. Equal-area ties are listed.",
+    "not_attained": "Every eligible design has minimum scenario upper estimate<target; equivalently maximum upper estimate<target. This is a model/grid/constraint result, not physical impossibility.",
+    "unresolved": "Any interval overlap that prevents a target or minimum-area classification is reported unresolved. No silent point-estimate decision, new solver refinement, or interpolation.",
+    "qualification": "Inherited numerical estimates with analytic tail control and floating guards are not certified enclosures. All claims remain conditional on the specified model and finite grid."
+  },
+  "mechanism_comparison": {
+    "deadline_min": 30,
+    "target_eta": 0.8,
+    "h_min_mm": 0.1,
+    "cases": [
+      {"name": "favorable", "D_m2_s": 3e-10, "P_m_s": "infinite", "ends": "absorbing"},
+      {"name": "lower_D_only", "D_m2_s": 1e-10, "P_m_s": "infinite", "ends": "absorbing"},
+      {"name": "finite_P_only", "D_m2_s": 3e-10, "P_m_s": 1e-6, "ends": "absorbing"},
+      {"name": "reflecting_ends_only", "D_m2_s": 3e-10, "P_m_s": "infinite", "ends": "reflecting"},
+      {"name": "all_three", "D_m2_s": 1e-10, "P_m_s": 1e-6, "ends": "reflecting"}
+    ],
+    "selection": "Apply the identical lower-estimate and all-lower-area-upper-exclusion rule to each single-case grid.",
+    "resource_outputs": "Selected thickness, lateral area, increase relative to original0.75mm geometry and favorable reoptimized design, pouch count, total length, remainder and active bounding footprint; next lower-area competitor and exclusion margin.",
+    "dimensionless": "Fo=D*T/h^2; Bi=P*h/D. Evaluate for each case at its selected h and at nominal h=0.75mm, with T=1800s and h in metres. Store Bi as explicit infinite for perfect outer sink. Also retain selected h/b and length/aspect-ratio descriptors; Fo and Bi alone do not remove geometry dependence.",
+    "interpretation": "Five conditional reoptimizations; area penalties are nonadditive and are not causal contributions or empirically ranked mechanisms for a real device."
+  },
+  "verification": {
+    "independent_postprocessing": "Governor A independently reconstructs constrained maxima, selections and mechanism rows from bound raw map. No new transport validation is implied.",
+    "checks": ["546 constraint target classifications and273 maximum-delivery rows", "No h_min selection violates its constraint", "Feasible sets shrink as h_min increases; maximum-delivery estimates cannot increase", "An already-admissible unconstrained least-area selection is unchanged", "All lower-area competitor exclusions or explicit unresolved status", "Agreement with existing30min frontiers and unconstrained targets", "Fo/Bi SI-unit arithmetic and explicit infinite boundary values", "Input and spec mutation negative tests"],
+    "reviewer_expected_checks": {"broad_h_min_0p25_max_eta_rounded_percent": 75.90, "broad_h_min_0p30_max_eta_rounded_percent": 69.67, "mechanism_selected_h_mm": [0.60, 0.34, 0.28, 0.59, 0.21], "mechanism_area_cm2_rounded": [141.18, 240.09, 289.12, 143.36, 381.79]},
+    "numeric_comparison_tolerance": 1e-12,
+    "reviewer_rounded_percent_and_area_tolerance": 0.0051,
+    "expected_values_policy": "Reviewer values are comparison checks, never fitted targets. Discrepancies are reported and investigated."
+  },
+  "outputs": ["data/design_constraints_maxima.csv", "data/design_constraints_targets.csv", "data/mechanism_comparison.csv", "evidence/design_constraints_verification.json", "evidence/design_constraints_selection_trace.json"]
+}

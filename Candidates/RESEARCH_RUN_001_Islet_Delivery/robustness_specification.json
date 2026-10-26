@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "revision": "2 robustness extension",
+  "frozen_before_main_robustness_computation": true,
+  "date": "2026-10-26",
+  "question": "How much extra area is required for the same-dose geometry to pass across declared transport scenarios, rather than only under the favorable nominal assumptions?",
+  "preserved_primary": "Original H1, original model_specification.json, numerical_primary.json and accepted nominal result are unchanged.",
+  "geometry": {
+    "outer_radius_m": 0.00375,
+    "nominal_inner_radius_m": 0.003,
+    "nominal_pouch_length_m": 0.07,
+    "nominal_pouch_count": 7,
+    "payload_IEQ": 420000,
+    "density_rule": "420000 divided by original seven-annulus volume; preserved at all h",
+    "thickness_mm_grid": {
+      "start": 0.1,
+      "stop": 1.0,
+      "step": 0.01
+    },
+    "segmentation": "minimum number of pouches of length<=70mm; full segments and one remainder, actual end effects volume weighted"
+  },
+  "source": {
+    "spatial": "uniform per compartment volume",
+    "temporal": "constant increment maintained to each15/30/60min deadline",
+    "initial_incremental_inventory": 0,
+    "secretion_response": "instantaneous; oxygen unlimited; no binding/degradation/convection"
+  },
+  "scenarios": {
+    "D_m2_s": [
+      1e-10,
+      2e-10,
+      2.85e-10,
+      3e-10
+    ],
+    "outer_P_m_s": [
+      1e-06,
+      1e-05,
+      "infinite"
+    ],
+    "ends": [
+      "absorbing",
+      "reflecting"
+    ],
+    "interpretation": "24 explicitly assumed discrete scenarios. No probabilities, confidence coverage, or guaranteed continuous ranges. Finite outer Robin resistance replaces outer perfect sink only; inner wall remains reflecting."
+  },
+  "sets": {
+    "nominal_favorable": {
+      "D": [
+        3e-10
+      ],
+      "P": [
+        "infinite"
+      ],
+      "ends": [
+        "absorbing"
+      ]
+    },
+    "near_nominal_discrete": {
+      "D": [
+        2.85e-10,
+        3e-10
+      ],
+      "P": [
+        1e-05,
+        "infinite"
+      ],
+      "ends": [
+        "absorbing",
+        "reflecting"
+      ]
+    },
+    "broad_discrete": {
+      "D": [
+        1e-10,
+        2e-10,
+        2.85e-10,
+        3e-10
+      ],
+      "P": [
+        1e-06,
+        1e-05,
+        "infinite"
+      ],
+      "ends": [
+        "absorbing",
+        "reflecting"
+      ]
+    }
+  },
+  "outputs": {
+    "deadlines_min": [
+      15,
+      30,
+      60
+    ],
+    "eta_targets": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "map": "all h*D*P*ends with conditional eta, tail bounds, area/length/payload/footprint",
+    "set_frontier": "minimum eta across each discrete set by h",
+    "selection": "smallest lateral area with lower numerical estimate meeting target for every set member; demonstrate every lower-area competitor has at least one upper estimate below target or mark unresolved"
+  },
+  "numerics": {
+    "primary": "continuum Neumann-inner/Robin-outer Bessel eigenfunctions and axial absorbing sine modes or zero reflecting mode",
+    "Robin_determinant": "D*k*f1(b)-P*f0(b)=0; f0=J0(kr)Y1(ka)-Y0(kr)J1(ka), f1=J1(kr)Y1(ka)-Y1(kr)J1(ka)",
+    "independent": "existing conservative FV radial/axial operator including face Robin conductance",
+    "grid_modes": [
+      128,
+      256
+    ],
+    "refinement_modes": [
+      256,
+      512
+    ],
+    "near_threshold_modes": [
+      512,
+      1024
+    ],
+    "root_bracket_dimensionless_step": "pi/16",
+    "root_absolute_tolerance": 1e-12,
+    "checks": [
+      "nonnegative uniform weights",
+      "analytic missing-mode eta tail",
+      "radial quadrature128 modes at1024points representative Robin cases",
+      "FV160/560 and320/1120 at representative and selected-worst/adjacent cases",
+      "refine any threshold interval overlap before classifying"
+    ],
+    "agreement_tolerance_eta": 0.0002,
+    "numerical_classification_margin": 1e-07,
+    "reported_uncertainty": "analytic truncation bound plus explicit floating-point guard; empirical independent FV differences separately reported; not certified enclosure"
+  },
+  "monotonicity": "No continuous D or P monotonicity is assumed for selection. Every discrete combination is evaluated; observed ordering is diagnostic only. The simple D-clock proof for perfect sinks is not reused with fixed finite P.",
+  "reviewer_reproduction": {
+    "h_mm": [
+      0.6,
+      0.61,
+      0.75
+    ],
+    "D_m2_s": [
+      1e-10,
+      2.85e-10,
+      3e-10
+    ],
+    "boundaries": [
+      "perfect outer/absorbing ends",
+      "perfect outer/reflecting ends"
+    ],
+    "critical_D_at_h0p6": "solve eta30=.8 under favorable sinks with dose-preserved segmentation",
+    "waveform": "compare uniformly distributed instantaneous initial inventory delivered by30min against constant production over30min at baseline; use separate denominators and state these are different inputs"
+  },
+  "nonclaims": [
+    "continuous parameter-box robustness",
+    "statistical probability of success",
+    "measured device transport",
+    "buildable redesign",
+    "clinical sufficiency",
+    "cure"
+  ]
+}

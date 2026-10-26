@@ -1,0 +1,13 @@
+thickness_mm,deadline_min,minimum_eta,worst_D_m2_s,worst_P_m_s,worst_end_condition,scope
+0.1,15,0.8540007391134845,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+0.1,30,0.9269150059712435,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+0.1,60,0.9634574529743933,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+0.6,15,0.2744729004425619,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+0.6,30,0.4213863930547861,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+0.6,60,0.604392810426669,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+0.75,15,0.22452071329762124,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+0.75,30,0.3467495053352001,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+0.75,60,0.5119877410150118,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+1.0,15,0.17486953917619366,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+1.0,30,0.2703992377350848,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only
+1.0,60,0.4050858160222047,1e-10,1e-06,reflecting,observed ordering within evaluated discrete scenarios only

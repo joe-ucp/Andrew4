@@ -1,0 +1,8 @@
+{
+  "geometry": "nominal seven identical annuli; perfect outer/end sinks; D3e-10",
+  "diffusion_timescale_h2_over_D_minutes": 31.25,
+  "dimensionless_D_T_over_h2_at30min": 0.96,
+  "instant_uniform_initial_inventory_fraction_delivered_by30min": 0.9420194476509852,
+  "constant_uniform_production_fraction_delivered_by30min": 0.7152690267316719,
+  "interpretation": "Distinct inputs and molecule ages. Impulse uses equal total amount present internally at t0; constant source distributes that amount over30min. An ideal production impulse has no finite peak-rate constraint; it is not a demonstrated physiological burst. No stored-inventory evidence is supplied."
+}

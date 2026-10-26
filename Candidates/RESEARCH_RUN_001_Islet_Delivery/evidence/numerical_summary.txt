@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "status": "supported",
+  "eta30_continuum_truncated": 0.7152697980076386,
+  "eta30_finest_FV": 0.7152579682163074,
+  "estimated_numerical_uncertainty_eta": 3.219055823966421e-05,
+  "estimated_interval_eta": [
+    0.7152376074493989,
+    0.7153019885658782
+  ],
+  "interval_status": "numerical estimate, not a formally certified enclosure",
+  "modal_omitted_tail_bound_eta": 2.7518461637101773e-06,
+  "FV_refinement_difference": 3.219055823966421e-05,
+  "independent_method_difference": 1.1829791331186001e-05,
+  "volume_ml": 7.793113276311181,
+  "effective_density_IEQ_per_ml": 53893.73734328731,
+  "nominal_60000_density_payload_IEQ": 467586.79657867085,
+  "side_area_cm2": 115.45353001942489,
+  "critical_D_m2_per_s_for_eta30_0_80": 4.5154547076651807e-10,
+  "reflecting_ends_eta30": 0.711893620192878,
+  "inventory_fraction_at_shutoff": 0.28473020199236143,
+  "fraction_recovered_120min_after_shutoff": 0.9999914762184823,
+  "source_rate_capacity_multiplier_at_30min": 1.398073849595591,
+  "root_bracketing": "pi/8 dimensionless steps, all sign changes retained in ascending order; Brent xtol 1e-12",
+  "max_root_residual": 1.6792123247455493e-15,
+  "minimum_radial_modal_weight": 1.3850530900094895e-05,
+  "radial_modal_weight_sum": 0.9982409618932863,
+  "axial_modal_weight_sum": 0.9992084292593244,
+  "frontier_max_omitted_tail_eta_bound": 5.505449765553057e-06,
+  "frontier_max_refinement_eta_difference": 1.7405784494828325e-06,
+  "frontier_threshold_neighbors": "All selected points and next thicker grid neighbors confirmed at 512 radial and 1024 axial modes; lower truncation bounds govern initial selection",
+  "frontier_global_grid_minimum_check": "Every strictly lower-area grid competitor has an upper truncated eta below its target; no monotonicity assumption used",
+  "sensitivity_max_grid_eta_difference": 6.348102804976108e-05,
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "model_specification_sha256": "e1a5f46cdddaa4fbf75dc2745bbd8303ff4c8b81ea99cfccdd49ab91da9038bc",
+  "checks": "All numerical assertions passed; no experimental or clinical validation implied"
+}
