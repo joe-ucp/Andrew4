@@ -18,7 +18,7 @@ This revision adds the two requested analyses using the accepted 6,552-row trans
 
 The frozen postprocessing specification binds four accepted input files. An independent internal audit reconstructed all273 maxima,546 decisions and five mechanism rows without importing the production postprocessing code. It verified8,936 lower-area exclusions,all unattained-target exclusions and Fo/Bi arithmetic. Outcomes:169 selected designs,377 not attained,zero unresolved. No new PDE validation or empirical evidence is implied.
 
-The named reviewer JSON was not supplied; its reported values were recalculated from the actual local map. The full reproduction command regenerates the earlier transport calculation and this extension. The local package records numerical checks,render review and file hashes. Nothing has been pushed or published.
+The named reviewer JSON was not supplied; its reported values were recalculated from the actual local map. The full reproduction command regenerates the earlier transport calculation and this extension. The repository records numerical checks,render review and file hashes.
 
 ## Decision added by this revision
 
